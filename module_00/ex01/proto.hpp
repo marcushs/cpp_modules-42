@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   proto.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/12 18:32:08 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/14 12:20:08 by hleung           ###   ########.fr       */
+/*   Created: 2023/11/13 09:29:51 by hleung            #+#    #+#             */
+/*   Updated: 2023/11/14 10:37:43 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef PROTO_HPP
+# define PROTO_HPP
+# include <iostream>
+# include <string>
+# include "PhoneBook.hpp"
 # include "Contact.hpp"
 
-class   PhoneBook
-{
-
-public:
-    
-    PhoneBook(void);
-    ~PhoneBook(void);
-    void    addContact();
-    Contact    getContact(int i);
-private:
-
-    Contact _contacts[8];
-};
+void	greet(void);
+void	printChars(int s, std::string c);
+void	addContact(PhoneBook *pb);
+void	addPrompt(std::string strs[5]);
 
 #endif

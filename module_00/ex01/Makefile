@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
+#    By: hleung <hleung@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 17:37:04 by hleung            #+#    #+#              #
-#    Updated: 2023/11/12 17:37:09 by hleung           ###   ########.fr        #
+#    Updated: 2023/11/14 12:22:33 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	megaphone
+NAME	=	phonebook
 CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
-SRCS	=	megaphone.cpp
+SRCS	=	main.cpp print.cpp PhoneBook.cpp Contact.cpp addUtils.cpp
 
 all:		${NAME}
 ${NAME}:	${SRCS}

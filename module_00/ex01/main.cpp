@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 08:26:45 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/14 12:28:11 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/14 14:06:54 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "Contact.hpp"
 
 void	prompt_cmd(PhoneBook *pb);
-static int	is_cmd(PhoneBook *pb, std::string cmd);
+// static int	is_cmd(PhoneBook *pb, std::string cmd);
 
 int	main(void)
 {
@@ -33,25 +33,35 @@ void	prompt_cmd(PhoneBook *pb)
 {
 	std::string	cmd;
 
-	do
+	while (1)
 	{
 		greet();
 		std::getline(std::cin, cmd);
-	} while (!is_cmd(pb, cmd));
+		if (!cmd.compare("ADD"))
+			pb->addContact();
+		else if(!cmd.compare("SEARCH"))
+			pb->printPhoneBook();
+		else if (!cmd.compare("EXIT") || std::cin.eof())
+			return ;
+		else
+			std::cout << "Invalid command, input is case-sensitive" << std::endl;
+	}
 	return ;
 }
 
-static int	is_cmd(PhoneBook *pb, std::string cmd)
-{
-	if (cmd.compare("ADD") == 0)
-	{
-		pb->addContact();
-		return (1);
-	}
-	else if (cmd.compare("SEARCH") == 0)
-		return (1);
-	else if (cmd.compare("EXIT") == 0)
-		return (1);
-	std::cout << "Invalid command, input is case-sensitive" << std::endl;
-	return (0);
-}
+// static int	is_cmd(PhoneBook *pb, std::string cmd)
+// {
+// 	if (cmd.compare("ADD") == 0)
+// 	{
+// 		pb->addContact();
+// 		return (1);
+// 	}
+// 	else if (cmd.compare("SEARCH") == 0)
+// 	{
+// 		pb->printPhoneBook();
+// 		return (1);
+// 	}
+// 	else if (cmd.compare("EXIT") == 0)
+// 		return (1);
+// 	return (0);
+// }

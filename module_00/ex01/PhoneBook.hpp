@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 18:32:08 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/14 12:20:08 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/14 14:16:57 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ public:
     PhoneBook(void);
     ~PhoneBook(void);
     void    addContact();
+    void    printPhoneBook();
     Contact    getContact(int i);
 private:
 

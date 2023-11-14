@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:56:19 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/14 12:19:56 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/14 14:25:46 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,31 @@ void	PhoneBook::addContact(void)
 	this->_contacts[idx].setNickName(strs[2]);
 	this->_contacts[idx].setPhoneNumber(strs[3]);
 	this->_contacts[idx].setSecret(strs[4]);
+	std::cout << "Contact successfully added to phone book!" << std::endl;
 	Contact::incrementNbContact();
+}
+
+void	PhoneBook::printPhoneBook()
+{
+	int	nbContact = Contact::getNbContact();
+	int	idx = (nbContact == 0) ? 0 : nbContact % 8;
+	
+	printPhoneBookHeader();
+	for (int i = 0; i < idx; i++)
+	{
+		printChars(1, "*");
+		printChars(9, " ");
+		std::cout << i << "|";
+		printPhoneBookShort(this->_contacts[i].getFirstName());
+		std::cout << "|";
+		printPhoneBookShort(this->_contacts[i].getLastName());
+		std::cout << "|";
+		printPhoneBookShort(this->_contacts[i].getNickName());
+		std::cout << "*";
+		std::cout << std::endl;
+	}
+	printChars(45, "*");
+	std::cout << std::endl;
 }
 
 Contact	PhoneBook::getContact(int i)

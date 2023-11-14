@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:29:51 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/14 14:24:17 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/14 15:32:04 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PROTO_HPP
 # include <iostream>
 # include <string>
+# include <cstdlib>
+
 # include "PhoneBook.hpp"
 # include "Contact.hpp"
 

@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 08:26:45 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/14 14:06:54 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/14 15:23:58 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(void)
 	PhoneBook	pb;
 	
 	prompt_cmd(&pb);
+
 	// std::cout << input << std::endl;
 	// pb.addContact();
 	// pb.addContact();
@@ -40,7 +41,7 @@ void	prompt_cmd(PhoneBook *pb)
 		if (!cmd.compare("ADD"))
 			pb->addContact();
 		else if(!cmd.compare("SEARCH"))
-			pb->printPhoneBook();
+			pb->searchContact();
 		else if (!cmd.compare("EXIT") || std::cin.eof())
 			return ;
 		else
@@ -48,20 +49,3 @@ void	prompt_cmd(PhoneBook *pb)
 	}
 	return ;
 }
-
-// static int	is_cmd(PhoneBook *pb, std::string cmd)
-// {
-// 	if (cmd.compare("ADD") == 0)
-// 	{
-// 		pb->addContact();
-// 		return (1);
-// 	}
-// 	else if (cmd.compare("SEARCH") == 0)
-// 	{
-// 		pb->printPhoneBook();
-// 		return (1);
-// 	}
-// 	else if (cmd.compare("EXIT") == 0)
-// 		return (1);
-// 	return (0);
-// }

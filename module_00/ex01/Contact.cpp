@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:58:55 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/14 12:10:14 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/14 14:47:16 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 
 Contact::Contact(void)
 {
-	std::cout << "test\n";
+	return ;
 }
 
 Contact::~Contact(void)
 {
-	std::cout << "Contact destructor called\n";
 	return ;
 }
 

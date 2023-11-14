@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:46:28 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/14 14:13:28 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/14 15:57:50 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ void	addPrompt(std::string strs[5])
 			else if (i == 4)
 				std::cout << ">> Enter Darket Secret :";
 			std::getline(std::cin, strs[i]);
+			if (std::cin.eof())
+				exit(EXIT_FAILURE);
 			if (i == 3 && !isValidPhone(strs[3]))
-				strs[i][0] = 0;
-		} while (!strs[i][0]);
+				strs[3].clear();
+		} while (strs[i].empty());
 	}
 }
 

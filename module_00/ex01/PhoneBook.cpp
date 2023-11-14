@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:56:19 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/14 14:25:46 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/14 16:04:27 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@
 
 PhoneBook::PhoneBook(void)
 {
-	std::cout << "Phonebook Constructor called\n";
 	return ;
 }
 
 PhoneBook::~PhoneBook(void)
 {
-	std::cout << "Phonebook Destructor called\n";
 	return ;
 }
 
@@ -33,6 +31,7 @@ void	PhoneBook::addContact(void)
 	int			idx = (nbContact == 0) ? 0 : nbContact % 8;
 
 	addPrompt(strs);
+	strs[0] = strs[0].substr(strs[0].find_first_not_of(" 	"), strs[0].find_last_not_of(" 	"));
 	this->_contacts[idx].setFirstName(strs[0]);
 	this->_contacts[idx].setLastName(strs[1]);
 	this->_contacts[idx].setNickName(strs[2]);
@@ -42,7 +41,24 @@ void	PhoneBook::addContact(void)
 	Contact::incrementNbContact();
 }
 
-void	PhoneBook::printPhoneBook()
+void	PhoneBook::searchContact()
+{
+	std::string	input;
+	int			nbContact = Contact::getNbContact();
+
+	this->_printPhoneBook();
+	if (nbContact > 0)
+	{
+		while (1)
+		{
+			std::cout << "Enter index of contact to see detail: ";
+			std::getline(std::cin, input);
+			
+		}
+	}
+}
+
+void	PhoneBook::_printPhoneBook()
 {
 	int	nbContact = Contact::getNbContact();
 	int	idx = (nbContact == 0) ? 0 : nbContact % 8;

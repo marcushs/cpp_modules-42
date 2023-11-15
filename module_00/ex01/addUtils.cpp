@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:46:28 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/14 15:57:50 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/15 14:04:17 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "Contact.hpp"
 
 static int		isValidPhone(std::string str);
+static int	hasNonPrintable(std::string str);
 
 void	addPrompt(std::string strs[5])
 {
@@ -35,6 +36,11 @@ void	addPrompt(std::string strs[5])
 			std::getline(std::cin, strs[i]);
 			if (std::cin.eof())
 				exit(EXIT_FAILURE);
+			if (hasNonPrintable(strs[i]))
+			{
+				std::cout << "Non printable characters are not accepted" << std::endl;
+				strs[i].clear();
+			}
 			if (i == 3 && !isValidPhone(strs[3]))
 				strs[3].clear();
 		} while (strs[i].empty());
@@ -55,4 +61,12 @@ static int	isValidPhone(std::string str)
 		}
 	}
 	return (1);
+}
+
+static int	hasNonPrintable(std::string str)
+{
+	for(std::string::iterator i = str.begin(); i != str.end(); ++i)
+		if (!isprint(*i))
+			return (1);
+	return (0);
 }

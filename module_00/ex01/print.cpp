@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:29:10 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/14 14:33:50 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/15 14:28:54 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,4 @@ void	printPhoneBookHeader(void)
 	std::cout << std::endl;
 }
 
-void	printPhoneBookShort(std::string str)
-{
-	int	len = str.length();
 
-	if (len > 10)
-	{
-		for (int i = 0; i < 9; i++)
-			std::cout << str[i];
-		std::cout << ".";
-	}
-	else
-	{
-		printChars(10 - len, " ");
-		std::cout << str;
-	}
-}

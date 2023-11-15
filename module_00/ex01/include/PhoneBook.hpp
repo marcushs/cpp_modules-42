@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 18:32:08 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/15 14:31:27 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:13:16 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class   PhoneBook
 {
 
 public:
-    
+
     PhoneBook(void);
     ~PhoneBook(void);
     void    addContact(void);
@@ -27,9 +27,12 @@ public:
     Contact    getContact(int i);
 private:
 
+    void	_addPrompt(std::string strs[5]);
     void    _printPhoneBook(void);
+    void	_printPhoneBookHeader(void);
     void    _printPhoneBookShort(std::string str);
     void    _printContactDetail(int idx);
+    void    _searchContactPrompt(int nbContact);
     Contact _contacts[8];
 };
 

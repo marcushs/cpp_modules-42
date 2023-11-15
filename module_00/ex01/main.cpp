@@ -6,31 +6,29 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 08:26:45 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/14 15:23:58 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:14:43 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "proto.hpp"
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
+#include "include/main.hpp"
+#include "include/PhoneBook.hpp"
+#include "include/Contact.hpp"
 
-void	prompt_cmd(PhoneBook *pb);
-// static int	is_cmd(PhoneBook *pb, std::string cmd);
+static void	prompt_cmd(PhoneBook *pb);
+static void	greet(void);
 
-int	main(void)
+int	main(int argc, char **argv)
 {
+	(void)argv;
 	PhoneBook	pb;
-	
-	prompt_cmd(&pb);
 
-	// std::cout << input << std::endl;
-	// pb.addContact();
-	// pb.addContact();
-	// std::cout << pb.getContact(0).getFirstName() << std::endl;
-	// std::cout << pb.getContact(1).getFirstName() << std::endl;
+	if (argc == 1)
+		prompt_cmd(&pb);
+	else
+		std::cout << "Program does not take argument" << std::endl;
 }
 
-void	prompt_cmd(PhoneBook *pb)
+static void	prompt_cmd(PhoneBook *pb)
 {
 	std::string	cmd;
 
@@ -48,4 +46,21 @@ void	prompt_cmd(PhoneBook *pb)
 			std::cout << "Invalid command, input is case-sensitive" << std::endl;
 	}
 	return ;
+}
+
+static void	greet(void)
+{
+	std::cout << std::endl;
+	std::cout << std::setfill('*') << std::setw(47);
+	std::cout << "*" << std::endl;
+	std::cout << "*";
+	std::cout << std::setfill(' ') << std::setw(7);
+	std::cout << " " << "Welcome to My Awesome Phonebook!";
+	std::cout << std::setfill(' ') << std::setw(7) << "*";
+	std::cout << std::endl;
+	std::cout << "* Please enter a command (ADD, SEARCH, EXIT)! *";
+	std::cout << std::endl;
+	std::cout << std::setfill('*') << std::setw(47);
+	std::cout << "*" << std::endl;
+	std::cout << std::endl;
 }

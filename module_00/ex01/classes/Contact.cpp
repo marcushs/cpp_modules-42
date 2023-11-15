@@ -6,12 +6,13 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:58:55 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/14 14:47:16 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/15 16:01:15 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "proto.hpp"
-#include "Contact.hpp"
+#include "../include/main.hpp"
+#include "../include/PhoneBook.hpp"
+#include "../include/Contact.hpp"
 
 Contact::Contact(void)
 {

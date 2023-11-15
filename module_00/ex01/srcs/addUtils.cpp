@@ -6,48 +6,15 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:46:28 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/15 14:04:17 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:08:35 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "proto.hpp"
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
+#include "../include/main.hpp"
+#include "../include/PhoneBook.hpp"
+#include "../include/Contact.hpp"
 
-static int		isValidPhone(std::string str);
-static int	hasNonPrintable(std::string str);
-
-void	addPrompt(std::string strs[5])
-{
-	for (int i = 0; i < 5; i++)
-	{
-		do
-		{
-			if (i == 0)
-				std::cout << ">> Enter First Name    :";
-			else if (i == 1)
-				std::cout << ">> Enter Last Name     :";
-			else if (i == 2)
-				std::cout << ">> Enter Nick Name     :";
-			else if (i == 3)
-				std::cout << ">> Enter Phone Number  :";
-			else if (i == 4)
-				std::cout << ">> Enter Darket Secret :";
-			std::getline(std::cin, strs[i]);
-			if (std::cin.eof())
-				exit(EXIT_FAILURE);
-			if (hasNonPrintable(strs[i]))
-			{
-				std::cout << "Non printable characters are not accepted" << std::endl;
-				strs[i].clear();
-			}
-			if (i == 3 && !isValidPhone(strs[3]))
-				strs[3].clear();
-		} while (strs[i].empty());
-	}
-}
-
-static int	isValidPhone(std::string str)
+int	isValidPhone(std::string str)
 {
 	for (int i = 0; str[i]; i++)
 	{
@@ -63,7 +30,7 @@ static int	isValidPhone(std::string str)
 	return (1);
 }
 
-static int	hasNonPrintable(std::string str)
+int	hasNonPrintable(std::string str)
 {
 	for(std::string::iterator i = str.begin(); i != str.end(); ++i)
 		if (!isprint(*i))

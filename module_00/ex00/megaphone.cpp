@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 17:36:02 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/15 15:11:49 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/16 07:04:58 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	main(int argc, char **argv)
 	for (int i = 1; i < argc && argc > 1; i++)
 	{
 		std::string str = argv[i];
-		for (size_t j = 0; str[j]; j++)
-			str[j] = std::toupper(str[j]);
+		for (std::string::iterator i = str.begin(); i != str.end(); ++i)
+			*i = std::toupper(*i);
 		std::cout << str;
 	}
 	std::cout << std::endl;

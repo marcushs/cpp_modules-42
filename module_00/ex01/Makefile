@@ -6,7 +6,7 @@
 #    By: hleung <hleung@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 17:37:04 by hleung            #+#    #+#              #
-#    Updated: 2023/11/17 10:42:35 by hleung           ###   ########.fr        #
+#    Updated: 2023/11/17 11:14:14 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,12 @@ LIST_OBJS	=	${SRCS:.cpp=.o}
 OBJS		=	${addprefix ${DIR_OBJS}, ${LIST_OBJS}}
 
 ${DIR_OBJS}%.o:	%.cpp ${DIR_OBJS} ${INC}/Contact.hpp ${INC}/PhoneBook.hpp ${INC}/main.hpp
-				@${CC} ${CFLAGS} -c $< -o $@
+				@${CC} ${CFLAGS} -c $< -o $@ -I ${INC}
 
 all:		${NAME}
 
 ${NAME}:	${OBJS} ${DIR_OBJS} ${INC}/Contact.hpp ${INC}/PhoneBook.hpp ${INC}/main.hpp
-			@${CC} ${CFLAGS} ${OBJS} -I ${INC} -o ${NAME}
+			@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
 			@echo "Compiling ${NAME}..."
 			@echo "Done!"
 

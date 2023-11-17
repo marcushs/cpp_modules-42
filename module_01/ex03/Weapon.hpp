@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:35:44 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/16 16:05:48 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/17 09:42:09 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ class Weapon
 
 public:
 
-	Weapon(std::string type);
+	Weapon(std::string const type);
 	~Weapon();
 
-	std::string	getType(void) const;
-	void		setType(std::string type);
+	std::string	const &getType(void) const;
+	void		setType(std::string const type);
 
 private:
 

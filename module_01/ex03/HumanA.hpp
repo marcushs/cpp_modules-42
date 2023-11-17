@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:35:32 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/16 16:58:14 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/17 08:57:59 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ public:
 	HumanA(std::string name, Weapon &wp);
 	~HumanA();
 	void	attack(void) const;
-	// Weapon	&getWeapon(void) const;
 
 private:
 

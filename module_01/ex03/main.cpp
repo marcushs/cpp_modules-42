@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:34:15 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/16 16:49:28 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/17 09:34:47 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int main()
 		Weapon club = Weapon("crude spiked club");
 		HumanA bob("Bob", club);
 		
-		// std::cout << &club << std::endl;
-		// std::cout << &bob.getWeapon() << std::endl;
 		bob.attack();
 		club.setType("some other type of club");
 		bob.attack();

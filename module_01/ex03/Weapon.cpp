@@ -6,13 +6,14 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:35:42 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/16 16:16:00 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/17 09:42:15 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
+#include <iostream>
 
-Weapon::Weapon(std::string type) : _type(type)
+Weapon::Weapon(std::string const type) : _type(type)
 {
 	return ;
 }
@@ -22,12 +23,12 @@ Weapon::~Weapon(void)
 	return ;
 }
 
-std::string	Weapon::getType(void) const
+std::string	const &Weapon::getType(void) const
 {
 	return this->_type;
 }
 
-void	Weapon::setType(std::string type)
+void	Weapon::setType(std::string const type)
 {
 	this->_type = type;
 	return ;

@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:35:37 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/16 16:40:30 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/17 09:00:15 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class HumanB
 
 public:
 	HumanB(std::string name);
-	~HumanB();
+	~HumanB(void);
 	void	attack(void) const;
 	void	setWeapon(Weapon wp);
 

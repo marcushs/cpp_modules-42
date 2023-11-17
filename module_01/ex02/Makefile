@@ -6,7 +6,7 @@
 #    By: hleung <hleung@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 13:10:37 by hleung            #+#    #+#              #
-#    Updated: 2023/11/17 11:03:59 by hleung           ###   ########.fr        #
+#    Updated: 2023/11/17 11:25:23 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,4 +36,5 @@ fclean:		clean
 re:			
 			@make fclean --no-print-directory
 			@make all --no-print-directory
+			
 .PHONY:		all clean fclean re 

@@ -6,28 +6,30 @@
 #    By: hleung <hleung@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 14:33:51 by hleung            #+#    #+#              #
-#    Updated: 2023/11/17 11:13:22 by hleung           ###   ########.fr        #
+#    Updated: 2023/11/17 11:24:39 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	violence
 CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
-SRCS	=	main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+INC		=	include
+SRCS	=	main.cpp classes/Weapon.cpp classes/HumanA.cpp classes/HumanB.cpp
 OBJS	=	${SRCS:.cpp=.o}
 
 all:		${NAME}
 
-%.o:		%.cpp Weapon.hpp HumanA.hpp HumanB.hpp
-			@${CC} ${CFLAGS} -c $< -o $@ -I Weapon.hpp HumanA.hpp HumanB.hpp
+%.o:		%.cpp 
+			@${CC} ${CFLAGS} -c $< -o $@ -I ${INC}
 
-${NAME}:	${OBJS} Weapon.hpp HumanA.hpp HumanB.hpp
-			@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+${NAME}:	${OBJS} ${INC}/Weapon.hpp ${INC}/HumanA.hpp ${INC}/HumanB.hpp
+			@${CC} ${CFLAGS} ${OBJS} -o ${NAME} 
 			@echo "Compiling ${NAME}..."
 			@echo "Done!"
 
 clean:		
 			@rm ${OBJS}
+			@echo "Removing object files"
 
 fclean:		clean
 			@rm -rf ${NAME}

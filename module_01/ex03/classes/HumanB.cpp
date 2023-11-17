@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:35:35 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/17 09:43:19 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/17 12:37:12 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ void	HumanB::attack(void) const
 	return ;
 }
 
-void	HumanB::setWeapon(Weapon wp)
+void	HumanB::setWeapon(Weapon &wp)
 {
 	this->_weapon = &wp;
-	// std::cout << "in humanb setweapon wp has type " << this->_weapon->getType() << std::endl;
 	return ;
 }

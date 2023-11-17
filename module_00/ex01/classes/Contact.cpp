@@ -6,17 +6,15 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:58:55 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/16 07:30:42 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/17 08:32:38 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/main.hpp"
-#include "../include/PhoneBook.hpp"
+#include <string>
 #include "../include/Contact.hpp"
 
 Contact::Contact(void)
 {
-	
 	return ;
 }
 

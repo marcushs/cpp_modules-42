@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 11:30:24 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/19 12:06:12 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/21 10:25:26 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,28 @@
 #include <fstream>
 #include <string>
 
+static char	*readFileString(char *inFile);
 static std::string	replaceOccurrence(char *buf, std::string occ, std::string rep);
 
 int	main(int argc, char **argv)
 {
 	if (argc == 4)
 	{
-		std::string	args[3];
-		for (int i = 0; i < 3; i++)
-			args[i] = argv[i + 1];
-
-		std::ifstream	ifs(args[0].c_str());
-		if (!ifs.is_open())
-		{
-			std::cout << "Error opening " << args[0] << std::endl;
-			return (1);
-		}
+		std::string	inFileName = argv[1];
+		std::string	occ = argv[2];
+		std::string	rep = argv[3];
 		
-		std::ofstream	ofs(args[0].append(".replace").c_str());
-		ifs.seekg (0, ifs.end);
-		int length = ifs.tellg();
-		ifs.seekg (0, ifs.beg);
+		char	*content = readFileString(argv[1]);
+		if (!content)
+			return (1);
 
-		char * buffer = new char [length];
+		std::string cpy = replaceOccurrence(content, occ, rep);
 
-		// read data as a block:
-		ifs.read (buffer,length);
-		ifs.close();
-		std::string cpy = replaceOccurrence(buffer, args[1], args[2]);
-		ofs.write(cpy.c_str(),length);
+		std::ofstream	ofs(inFileName.append(".replace").c_str());
+		ofs.write(cpy.c_str(),cpy.length());
 		ofs.close();
+
+		delete [] content;
 		return (0);
 	}
 
@@ -53,21 +45,38 @@ int	main(int argc, char **argv)
 
 static std::string	replaceOccurrence(char *buf, std::string occ, std::string rep)
 {
-	std::string cpy = buf;
+	std::string	cpy = buf;
+	size_t		occLen = occ.length();
+	size_t		repLen = rep.length();
 	size_t		pos = cpy.find(occ);
-	int			nbOcc = 0;
 
 	while (pos != std::string::npos)
 	{
-		nbOcc++;
-		cpy.erase(pos, occ.length());
+		cpy.erase(pos, occLen);
 		cpy.insert(pos, rep);
-		pos = cpy.find(occ, pos + rep.length());
+		pos = cpy.find(occ, pos + repLen);
+	}
+	return (cpy);
+}
+
+static char	*readFileString(char *inFile)
+{
+	std::ifstream	ifs(inFile);
+
+	if (!ifs.is_open())
+	{
+		std::cout << "Error opening " << inFile << std::endl;
+		return (NULL);
 	}
 	
-	int	lenDiff = ((int)occ.length() - (int)rep.length()) * nbOcc;
-	if (lenDiff < 0)
-		lenDiff *= -1;
-	cpy.resize(lenDiff);
-	return (cpy);
+	ifs.seekg (0, ifs.end);
+	int length = ifs.tellg();
+	ifs.seekg (0, ifs.beg);
+
+	char *str = new char [length + 1];
+	ifs.read (str,length);
+	str[length] = '\0';
+	ifs.close();
+
+	return (str);
 }

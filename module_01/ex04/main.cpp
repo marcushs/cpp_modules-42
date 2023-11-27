@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 11:30:24 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/21 10:25:26 by hleung           ###   ########.fr       */
+/*   Updated: 2023/11/27 13:54:25 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <fstream>
 #include <string>
 
+static int	writeStringToFile(std::ofstream &ofs, const std::string &cpy);
 static char	*readFileString(char *inFile);
 static std::string	replaceOccurrence(char *buf, std::string occ, std::string rep);
 
@@ -27,20 +28,32 @@ int	main(int argc, char **argv)
 		
 		char	*content = readFileString(argv[1]);
 		if (!content)
-			return (1);
+			return (2);
 
 		std::string cpy = replaceOccurrence(content, occ, rep);
 
 		std::ofstream	ofs(inFileName.append(".replace").c_str());
-		ofs.write(cpy.c_str(),cpy.length());
-		ofs.close();
+		if (!ofs.good())
+		{
+			std::cerr << "Error opening outfile" << std::endl;
+			delete [] content;
+			return (3);
+		}
+
+		if (writeStringToFile(ofs, cpy) == -1)
+		{
+			delete [] content;
+			ofs.close();
+			return (4);
+		}
 
 		delete [] content;
+		ofs.close();
 		return (0);
 	}
 
-	std::cout << "Usage: sed <filename> <string1> <string2>" << std::endl;
-	return (0);
+	std::cerr << "Usage: sed <filename> <string1> <string2>" << std::endl;
+	return (1);
 }
 
 static std::string	replaceOccurrence(char *buf, std::string occ, std::string rep)
@@ -65,7 +78,7 @@ static char	*readFileString(char *inFile)
 
 	if (!ifs.is_open())
 	{
-		std::cout << "Error opening " << inFile << std::endl;
+		std::cerr << "Error opening " << inFile << std::endl;
 		return (NULL);
 	}
 	
@@ -74,9 +87,24 @@ static char	*readFileString(char *inFile)
 	ifs.seekg (0, ifs.beg);
 
 	char *str = new char [length + 1];
-	ifs.read (str,length);
+	ifs.read (str, length);
+	if (!ifs)
+	{
+		std::cerr << "Error: only " << ifs.gcount() << " have been read";
+		return (NULL);
+	}
 	str[length] = '\0';
 	ifs.close();
-
 	return (str);
+}
+
+static int	writeStringToFile(std::ofstream &ofs, const std::string &cpy)
+{
+	ofs.write(cpy.c_str(), cpy.length());
+	if (!ofs)
+	{
+		std::cerr << "Error during write operation" << std::endl;
+		return (-1);
+	}
+	return (0);
 }

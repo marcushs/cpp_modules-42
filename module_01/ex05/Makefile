@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/18 11:23:40 by hleung            #+#    #+#              #
-#    Updated: 2023/12/01 07:10:08 by hleung           ###   ########.fr        #
+#    Created: 2023/12/01 07:09:48 by hleung            #+#    #+#              #
+#    Updated: 2023/12/01 07:14:01 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	sed
+NAME	=	harl
 CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
-SRCS	=	main.cpp
+SRCS	=	main.cpp Harl.cpp
 OBJS	=	${SRCS:.cpp=.o}
 
 all:		${NAME}
@@ -21,7 +21,7 @@ all:		${NAME}
 %.o:		%.cpp
 			@${CC} ${CFLAGS} -c $< -o $@
 
-${NAME}:	${OBJS}
+${NAME}:	${OBJS} Harl.hpp
 			@${CC} ${CFLAGS} ${OBJS} -o ${NAME} 
 			@echo "Compiling ${NAME}..."
 			@echo "Done!"

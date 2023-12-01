@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 07:14:09 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/01 07:20:59 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/01 16:08:36 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ public:
 	void	complain(std::string level);
 
 private:
-	void	_debug(void);
-	void	_info(void);
-	void	_warning(void);
-	void	_error(void);
+	void	debug(void);
+	void	info(void);
+	void	warning(void);
+	void	error(void);
 };
 
 #endif

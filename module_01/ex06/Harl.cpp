@@ -5,13 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 07:14:05 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/01 17:17:50 by hleung           ###   ########.fr       */
+/*   Created: 2023/12/01 16:14:02 by hleung            #+#    #+#             */
+/*   Updated: 2023/12/01 17:16:17 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 #include <iostream>
+
+static void functionLoop(int i, void (Harl::*f[4])(void), Harl *harl);
 
 Harl::Harl(void)
 {
@@ -27,16 +29,32 @@ void	Harl::complain(std::string level)
 {
 	void	(Harl::*f[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int	i = 0;
 
-	for (int i = 0; i < 4; i++)
+	while (i < 4 && levels[i].compare(level))
+		i++;
+	switch (i)
 	{
-		if (!levels[i].compare(level))
-		{
-			(this->*f[i])();
-			return ;
-		}
+		case 0:
+			functionLoop(i, f, this);
+			break;
+
+		case 1:
+			functionLoop(i, f, this);
+			break;
+
+		case 2:
+			functionLoop(i, f, this);
+			break;
+
+		case 3:
+			functionLoop(i, f, this);
+			break;
+	
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+			break;
 	}
-	std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 }
 
 void	Harl::debug(void)
@@ -61,4 +79,10 @@ void	Harl::error(void)
 {
 	std::cout << "[ERROR]" << std::endl;
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
+}
+
+static void	functionLoop(int i, void (Harl::*f[4])(void), Harl *harl)
+{
+	for (; i < 4; i++)
+		(harl->*f[i])();
 }

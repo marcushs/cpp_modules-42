@@ -12,6 +12,7 @@
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
+# include <iostream>
 
 class Fixed
 {
@@ -19,15 +20,21 @@ class Fixed
 public:
 	Fixed(void);
 	Fixed(const Fixed &src);
+	Fixed(const int value);
+	Fixed(const float value);
 	~Fixed();
 
 	Fixed	&operator=(const Fixed &rhs);
 	int		get_rawBits(void) const;
 	void	set_rawBits(int const raw);
+	float	toFloat(void) const;
+	int		toInt(void) const;
 
 private:
 	int					_rawBits;
 	static const int	_nbFractionalBits;
 };
+
+std::ostream	&operator<<(std::ostream &o, const Fixed &rhs);
 
 #endif

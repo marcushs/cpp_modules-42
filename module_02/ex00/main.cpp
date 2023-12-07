@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 13:06:44 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/06 18:12:47 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/07 09:15:09 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	Fixed b( a );
 	Fixed c;
 	c = b;
-	std::cout << a.get_rawBits() << std::endl;
-	std::cout << b.get_rawBits() << std::endl;
-	std::cout << c.get_rawBits() << std::endl;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
 }

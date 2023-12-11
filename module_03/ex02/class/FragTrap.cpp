@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:17:36 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/11 16:30:05 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/11 20:44:32 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ FragTrap::FragTrap(void)
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
 	std::cout << "Created FragTrap Default" << std::endl;
-	return ;
+	return;
 }
 
 FragTrap::FragTrap(const std::string name)
@@ -28,24 +28,24 @@ FragTrap::FragTrap(const std::string name)
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
 	std::cout << "Created FragTrap " << name << std::endl;
-	return ;
+	return;
 }
 
-FragTrap::FragTrap(const FragTrap &src)
+FragTrap::FragTrap(const FragTrap &src) : ClapTrap(src)
 {
 	*this = src;
 	std::cout << "Copied FragTrap " << this->_name << std::endl;
-	return ;
+	return;
 }
 
 FragTrap::~FragTrap(void)
 {
 	std::cout << "FragTrap " << this->_name << " called destructor" << std::endl;
-	return ;
+	return;
 }
 
-void	FragTrap::highFiveGuys(void)
+void FragTrap::highFiveGuys(void)
 {
 	std::cout << "Let's high five guys!" << std::endl;
-	return ;
+	return;
 }

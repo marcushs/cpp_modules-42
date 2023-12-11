@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:29:30 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/11 16:09:13 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/11 20:42:38 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ScavTrap::ScavTrap(void)
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
 	std::cout << "Created ScavTrap Default" << std::endl;
-	return ;
+	return;
 }
 
 ScavTrap::ScavTrap(const std::string name)
@@ -28,36 +28,39 @@ ScavTrap::ScavTrap(const std::string name)
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
 	std::cout << "Created ScavTrap " << name << std::endl;
-	return ;
+	return;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &src)
+ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src)
 {
 	*this = src;
 	std::cout << "Copied ScavTrap " << this->_name << std::endl;
-	return ;
+	return;
 }
 
 ScavTrap::~ScavTrap(void)
 {
 	std::cout << "ScavTrap " << this->_name << " called destructor" << std::endl;
-	return ;
+	return;
 }
 
-void	ScavTrap::attack(const std::string &target)
+void ScavTrap::attack(const std::string &target)
 {
 	if (this->isDead())
-		return ;
+		return;
 
 	std::cout << "ScavTrap " << this->_name << " attacks " << target;
 	std::cout << ", causing " << this->_attackDamage << " points of damage" << std::endl;
 
 	this->_energyPoints--;
-	return ;
+	return;
 }
 
-void	ScavTrap::guardGate(void)
+void ScavTrap::guardGate(void)
 {
+	if (this->isDead())
+		return;
+
 	std::cout << "ScavTrap " << this->_name << " is now in Gatekeeper mode." << std::endl;
-	return ;
+	return;
 }

@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:43:19 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/11 16:09:30 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/11 20:10:49 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ScavTrap.hpp"
 
-int	main(void)
+int main(void)
 {
 	ScavTrap bob("bob");
 	ScavTrap max("max");
+	ScavTrap a(bob);
 
 	std::cout << bob << std::endl;
 	std::cout << max << std::endl;
-	
+	std::cout << a << std::endl;
+
 	bob.guardGate();
 	bob.attack(max.getName());
 	std::cout << bob << std::endl;

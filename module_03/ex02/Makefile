@@ -3,54 +3,58 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hleung <hleung@student.42.fr>              +#+  +:+       +#+         #
+#    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 09:43:11 by hleung            #+#    #+#              #
-#    Updated: 2023/12/11 16:32:09 by hleung           ###   ########.fr        #
+#    Updated: 2023/12/11 20:43:45 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	scavtrap
+NAME		=	fragtrap
 CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98
+CFLAG		=	-Wall -Wextra -Werror -std=c++98
+RM			=	rm -rf
 
+INC			=	include/
 SRC_DIR		=	src/
 CLS_DIR		=	class/
-OBJ_DIR		=	.objs/
-INC			=	include/
+OBJ_DIR		=	.obj/
 
-SRC_FILES	=	main.cpp
-CLS_FILES	=	ClapTrap.cpp ScavTrap.cpp
-SRCS		=	${addprefix ${CLS_DIR}, ${CLS_FILES}}
-SRCS		+=	${addprefix ${SRC_DIR}, ${SRC_FILES}}
+SRC_LIST	=	main.cpp
+CLS_LIST	=	ClapTrap.cpp \
+				FragTrap.cpp \
+				ScavTrap.cpp \
+
+SRCS		=	${addprefix ${SRC_DIR}, ${SRC_LIST}}
+SRCS		+=	${addprefix ${CLS_DIR}, ${CLS_LIST}}
 OBJS		=	${addprefix ${OBJ_DIR}, ${SRCS:.cpp=.o}}
-DEP_FILES	=	${OBJS:.o=.d}
+DEP_FILE	=	${OBJS:.o=.d}
 
-all:		${NAME}
+all:			${NAME}
 
-${OBJ_DIR}%.o:	%.cpp ${OBJ_DIR}
-			@${CC} ${CFLAGS} -I ${INC} -MMD -c $< -o $@
+${OBJ_DIR}%.o:	%.cpp | ${OBJ_DIR}
+				@${CC} ${CFLAG} -I ${INC} -MMD -c $< -o $@
 
-${NAME}:	${OBJS}
-			@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
-			@echo "Compiling ${NAME}..."
-			@echo "Done!"
+${NAME}:		${OBJS}
+				@${CC} ${CFLAG} ${OBJS} -o ${NAME}
+				@echo "Compiling ${NAME}..."
+				@echo "Done!"
 
-${OBJ_DIR}:
-			@mkdir -p ${OBJ_DIR}${SRC_DIR} ${OBJ_DIR}${CLS_DIR}
+${OBJ_DIR}:		
+				@mkdir -p ${OBJ_DIR}${SRC_DIR} ${OBJ_DIR}${CLS_DIR}
 
-clean:		
-			@rm -rf ${OBJ_DIR}
-			@echo "Removing object files"
+clean:
+				@${RM} ${OBJ_DIR}
+				@echo "Removing object files"
 
-fclean:		clean
-			@rm -rf ${NAME}
-			@echo "Removing ${NAME}"
+fclean:			clean
+				@${RM} ${NAME}
+				@echo "Removing ${NAME}"
 
-re:			
-			@make fclean --no-print-directory
-			@make all --no-print-directory
+re:	
+				@make fclean --no-print-directory
+				@make all --no-print-directory
 
-.PHONY:		all clean re fclean
+.PHONY:			re clean fclean all
 
--include ${DEP_FILES}
+-include ${DEP_FILE}

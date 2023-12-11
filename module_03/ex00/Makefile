@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hleung <hleung@student.42.fr>              +#+  +:+       +#+         #
+#    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 09:43:11 by hleung            #+#    #+#              #
-#    Updated: 2023/12/11 16:04:46 by hleung           ###   ########.fr        #
+#    Updated: 2023/12/11 20:31:32 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ DEP_FILES	=	${OBJS:.o=.d}
 
 all:		${NAME}
 
-${OBJ_DIR}%.o:	%.cpp ${OBJ_DIR}
+${OBJ_DIR}%.o:	%.cpp | ${OBJ_DIR}
 			@${CC} ${CFLAGS} -I ${INC} -MMD -c $< -o $@ -I ${INC}
 
 ${NAME}:	${OBJS}

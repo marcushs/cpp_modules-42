@@ -6,11 +6,11 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:43:19 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/11 11:24:48 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/11 15:05:55 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "../include/ClapTrap.hpp"
 
 int	main(void)
 {

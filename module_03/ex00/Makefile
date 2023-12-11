@@ -6,28 +6,41 @@
 #    By: hleung <hleung@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 09:43:11 by hleung            #+#    #+#              #
-#    Updated: 2023/12/11 10:10:07 by hleung           ###   ########.fr        #
+#    Updated: 2023/12/11 15:22:15 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	claptrap
-CC		=	c++
-CFLAGS	=	-Wall -Wextra -Werror -std=c++98
-SRCS	=	main.cpp ClapTrap.cpp
-OBJS	=	${SRCS:.cpp=.o}
+NAME		=	claptrap
+CC			=	c++
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98
+
+SRC_DIR		=	src/
+CLS_DIR		=	class/
+OBJ_DIR		=	.objs/
+INC			=	include/
+
+SRC_FILES	=	main.cpp
+CLS_FILES	=	ClapTrap.cpp
+SRCS		=	${addprefix ${CLS_DIR}, ${CLS_FILES}}
+SRCS		+=	${addprefix ${SRC_DIR}, ${SRC_FILES}}
+OBJS		=	${addprefix ${OBJ_DIR}, ${SRCS:.cpp=.o}}
+DEP_FILES	=	${OBJS:.o=.d}
 
 all:		${NAME}
 
-%.o:		%.cpp
-			@${CC} ${CFLAGS} -c $< -o $@
+${OBJ_DIR}%.o:	%.cpp ${OBJ_DIR}
+			@${CC} ${CFLAGS} -I ${INC} -MMD -c $< -o $@ -I ${INC}
 
-${NAME}:	${OBJS} ClapTrap.hpp
+${NAME}:	${OBJS}
 			@${CC} ${CFLAGS} ${OBJS} -o ${NAME} 
 			@echo "Compiling ${NAME}..."
 			@echo "Done!"
 
+${OBJ_DIR}:
+			@mkdir -p ${OBJ_DIR}${SRC_DIR} ${OBJ_DIR}${CLS_DIR}
+
 clean:		
-			@rm ${OBJS}
+			@rm -rf ${OBJ_DIR}
 			@echo "Removing object files"
 
 fclean:		clean

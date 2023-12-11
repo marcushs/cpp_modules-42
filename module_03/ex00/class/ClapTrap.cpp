@@ -6,11 +6,11 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:43:14 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/11 11:18:04 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/11 14:37:02 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "../include/ClapTrap.hpp"
 
 ClapTrap::ClapTrap(void) : _name("Default"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {

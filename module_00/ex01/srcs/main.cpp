@@ -6,13 +6,13 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 08:26:45 by hleung            #+#    #+#             */
-/*   Updated: 2023/11/15 17:14:43 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/11 09:23:44 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/main.hpp"
-#include "include/PhoneBook.hpp"
-#include "include/Contact.hpp"
+#include "../include/main.hpp"
+#include "../include/PhoneBook.hpp"
+#include "../include/Contact.hpp"
 
 static void	prompt_cmd(PhoneBook *pb);
 static void	greet(void);

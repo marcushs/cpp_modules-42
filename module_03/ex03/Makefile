@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/11 09:43:11 by hleung            #+#    #+#              #
-#    Updated: 2023/12/11 20:48:02 by hleung           ###   ########.fr        #
+#    Created: 2023/12/11 20:47:10 by hleung            #+#    #+#              #
+#    Updated: 2023/12/11 20:59:07 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	fragTrap
+NAME		=	diamondTrap
 CC			=	c++
 CFLAG		=	-Wall -Wextra -Werror -std=c++98
-RM			=	rm -rf
+rm			=	rm -rf
 
 INC			=	include/
 SRC_DIR		=	src/
@@ -22,13 +22,13 @@ OBJ_DIR		=	.obj/
 
 SRC_LIST	=	main.cpp
 CLS_LIST	=	ClapTrap.cpp \
+				DiamondTrap.cpp \
 				FragTrap.cpp \
-				ScavTrap.cpp \
-
+				ScavTrap.cpp
 SRCS		=	${addprefix ${SRC_DIR}, ${SRC_LIST}}
 SRCS		+=	${addprefix ${CLS_DIR}, ${CLS_LIST}}
 OBJS		=	${addprefix ${OBJ_DIR}, ${SRCS:.cpp=.o}}
-DEP_FILE	=	${OBJS:.o=.d}
+DEP_FILES	=	${OBJS:.o=.d}
 
 all:			${NAME}
 
@@ -38,7 +38,7 @@ ${OBJ_DIR}%.o:	%.cpp | ${OBJ_DIR}
 ${NAME}:		${OBJS}
 				@${CC} ${CFLAG} ${OBJS} -o ${NAME}
 				@echo "Compiling ${NAME}..."
-				@echo "Done!"
+				@echo "Done"
 
 ${OBJ_DIR}:		
 				@mkdir -p ${OBJ_DIR}${SRC_DIR} ${OBJ_DIR}${CLS_DIR}
@@ -51,10 +51,11 @@ fclean:			clean
 				@${RM} ${NAME}
 				@echo "Removing ${NAME}"
 
-re:	
+re:
 				@make fclean --no-print-directory
 				@make all --no-print-directory
 
-.PHONY:			re clean fclean all
+.PHONY:			all clean fclean re
 
--include ${DEP_FILE}
+-include ${DEP_FILES}
+

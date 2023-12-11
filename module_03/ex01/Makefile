@@ -6,11 +6,11 @@
 #    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 09:43:11 by hleung            #+#    #+#              #
-#    Updated: 2023/12/11 20:29:42 by hleung           ###   ########.fr        #
+#    Updated: 2023/12/11 20:47:56 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	scavtrap
+NAME		=	scavTrap
 CC			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 

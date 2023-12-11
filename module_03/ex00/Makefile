@@ -6,7 +6,7 @@
 #    By: hleung <hleung@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 09:43:11 by hleung            #+#    #+#              #
-#    Updated: 2023/12/11 15:22:15 by hleung           ###   ########.fr        #
+#    Updated: 2023/12/11 16:04:46 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,3 +52,5 @@ re:
 			@make all --no-print-directory
 
 .PHONY:		all clean re fclean
+
+-include ${DEP_FILES}

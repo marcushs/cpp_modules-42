@@ -6,11 +6,11 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:43:19 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/11 14:30:48 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/11 16:09:30 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "../include/ScavTrap.hpp"
 
 int	main(void)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:43:19 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/11 20:42:03 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/12 10:16:40 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int main(void)
 {
 	FragTrap bob("bob");
 	FragTrap max("max");
+	FragTrap a;
 
 	std::cout << bob << std::endl;
 	std::cout << max << std::endl;

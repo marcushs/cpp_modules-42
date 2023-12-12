@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
+#    By: hleung <hleung@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 20:47:10 by hleung            #+#    #+#              #
-#    Updated: 2023/12/11 20:59:07 by hleung           ###   ########.fr        #
+#    Updated: 2023/12/12 17:18:31 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	diamondTrap
 CC			=	c++
 CFLAG		=	-Wall -Wextra -Werror -std=c++98
-rm			=	rm -rf
+RM			=	rm -rf
 
 INC			=	include/
 SRC_DIR		=	src/

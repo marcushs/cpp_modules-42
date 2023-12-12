@@ -3,22 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:43:19 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/11 20:42:03 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/12 17:15:48 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/FragTrap.hpp"
+#include "../include/DiamondTrap.hpp"
 
 int main(void)
 {
-	FragTrap bob("bob");
-	FragTrap max("max");
+	DiamondTrap bob("bob");
+	DiamondTrap max("max");
+	DiamondTrap a(max);
 
+	std::cout << a << std::endl;
 	std::cout << bob << std::endl;
 	std::cout << max << std::endl;
+
+	a.whoAmI();
 
 	bob.attack(max.getName());
 	std::cout << bob << std::endl;
@@ -43,4 +47,5 @@ int main(void)
 	std::cout << bob << std::endl;
 	bob.highFiveGuys();
 	max.highFiveGuys();
+	
 }

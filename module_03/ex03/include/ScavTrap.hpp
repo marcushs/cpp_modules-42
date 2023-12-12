@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:29:27 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/11 14:27:41 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/12 16:29:54 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SCAVTRAP_HPP
 # include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
 
 public:
@@ -25,6 +25,16 @@ public:
 
 	void	attack(const std::string &target);
 	void	guardGate(void);
+
+	unsigned int	getStartHitPoints(void) const;
+	unsigned int	getStartEnergyPoints(void) const;
+	unsigned int	getStartAttackDamage(void) const;
+
+protected:
+
+	unsigned int	_startHitPoints;
+	unsigned int	_startEnergyPoints;
+	unsigned int	_startAttackDamage;
 };
 
 #endif

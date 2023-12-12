@@ -39,10 +39,10 @@ ClapTrap::~ClapTrap(void)
 
 ClapTrap	&ClapTrap::operator=(const ClapTrap &rhs)
 {
-	this->_name = rhs.getName();
-	this->_hitPoints = rhs.getHitPoints();
-	this->_energyPoints = rhs.getEnergyPoints();
-	this->_attackDamage = rhs.getAttackDamage();
+	this->_name = rhs._name;
+	this->_hitPoints = rhs._hitPoints;
+	this->_energyPoints = rhs._energyPoints;
+	this->_attackDamage = rhs._attackDamage;
 	return *this;
 }
 

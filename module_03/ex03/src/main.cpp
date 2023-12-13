@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:43:19 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/12 17:15:48 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/13 14:34:39 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,18 @@ int main(void)
 	DiamondTrap max("max");
 	DiamondTrap a(max);
 
-	std::cout << a << std::endl;
 	std::cout << bob << std::endl;
 	std::cout << max << std::endl;
+	std::cout << a << std::endl;
 
 	a.whoAmI();
 
-	bob.attack(max.getName());
+	bob.attack(a.getName());
 	std::cout << bob << std::endl;
+	std::cout << a << std::endl;
 
-	max.takeDamage(3);
-	std::cout << max << std::endl;
+	a.takeDamage(3);
+	std::cout << a << std::endl;
 
 	max.beRepaired(7);
 	std::cout << max << std::endl;

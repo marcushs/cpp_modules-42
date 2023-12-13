@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:43:16 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/11 12:50:06 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/13 14:03:34 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ public:
 	unsigned int		getAttackDamage(void) const;
 
 	int					isDead(void) const;
+
 protected:
 	std::string		_name;
 	unsigned int	_hitPoints;

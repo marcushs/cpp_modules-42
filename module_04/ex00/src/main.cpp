@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 07:31:23 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/13 08:25:44 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/13 08:28:11 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,19 @@ int	main(void)
 
 	const WrongAnimal* b = new WrongAnimal();
 	const WrongAnimal* wrongCat = new WrongCat();
+	const WrongCat* wrongCat2 = new WrongCat();
 
 	std::cout << b->getType() << " " << std::endl; // Output: "Generic WrongAnimal"
 	std::cout << wrongCat->getType() << " " << std::endl; // Output: "WrongCat"
+	std::cout << wrongCat2->getType() << " " << std::endl; // Output: "WrongCat"
 	
 	b->makeSound(); // Output: "Generic WrongAnimal goes "RANDOM WRONG_ANIMAL SOUND""
 	wrongCat->makeSound(); // Output: "WrongCat goes "RANDOM WRONG_ANIMAL SOUND""
+	wrongCat2->makeSound(); // Output: "WrongCat goes "MEOW MEOW""
 
 	delete b;
 	delete wrongCat;
+	delete wrongCat2;
 	
 	return 0;
 }

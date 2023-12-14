@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 07:30:11 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/13 10:34:00 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/14 09:48:19 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,16 @@ Cat::Cat(void)
 
 Cat::Cat(const Cat &src)
 {
-	std::cout << "Cat copy constructor called" << std::endl;
-	*this = src;
-	return ;
+	this->_type = src.getType();
+	this->_brain = new Brain(*src.getBrain());
+	std::cout << "Cat copy constructor called (Cat)" << std::endl;
+}
+
+Cat::Cat(const Animal &src)
+{
+	this->_type = src.getType();
+	this->_brain = new Brain(*src.getBrain());
+	std::cout << "Cat copy constructor called (Animal)" << std::endl;
 }
 
 Cat::~Cat(void)
@@ -33,11 +40,26 @@ Cat::~Cat(void)
 	std::cout << "Cat destructor called" << std::endl;
 }
 
+Animal	&Cat::operator=(const Animal &rhs)
+{
+	if (this != &rhs)
+	{		
+		delete this->_brain;
+		this->_type = rhs.getType();
+		this->_brain = new Brain(*rhs.getBrain());
+	}
+	return *this;
+}
+
 Cat	&Cat::operator=(const Cat &rhs)
 {
-	this->_type = rhs._type;
-	this->_brain = new Brain(*rhs._brain);
-	return (*this);
+	if (this != &rhs)
+	{		
+		delete this->_brain;
+		this->_type = rhs._type;
+		this->_brain = new Brain(*rhs._brain);
+	}
+	return *this;
 }
 
 void	Cat::makeSound(void) const

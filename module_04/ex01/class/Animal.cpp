@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 07:01:11 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/13 08:00:03 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/14 09:04:54 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ Animal::~Animal(void)
 
 Animal	&Animal::operator=(const Animal &rhs)
 {
-	this->_type = rhs._type;
+	if (this != &rhs)
+		this->_type = rhs._type;
 	return *this;
 }
 
@@ -44,4 +45,10 @@ std::string	Animal::getType(void) const
 void	Animal::makeSound(void) const
 {
 	std::cout << this->_type << " goes \"RANDOM ANIMAL SOUND\"" << std::endl;
+}
+
+Brain	*Animal::getBrain(void) const
+{
+	std::cout << "Generic animal has no brain!" << std::endl;
+	return NULL;
 }

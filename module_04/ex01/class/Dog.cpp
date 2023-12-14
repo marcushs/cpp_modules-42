@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 07:10:21 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/13 16:47:41 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/14 09:52:46 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,16 @@ Dog::Dog(void)
 
 Dog::Dog(const Dog &src)
 {
-	std::cout << "Dog copy constructor called" << std::endl;
-	*this = src;
-	return ;
+	this->_type = src.getType();
+	this->_brain = new Brain(*src.getBrain());
+	std::cout << "Dog copy constructor called (Dog)" << std::endl;
+}
+
+Dog::Dog(const Animal &src)
+{
+	this->_type = src.getType();
+	this->_brain = new Brain(*src.getBrain());
+	std::cout << "Dog copy constructor called (Animal)" << std::endl;
 }
 
 Dog::~Dog(void)
@@ -33,11 +40,26 @@ Dog::~Dog(void)
 	std::cout << "Dog destructor called" << std::endl;
 }
 
+Animal	&Dog::operator=(const Animal &rhs)
+{
+	if (this != &rhs)
+	{
+		delete this->_brain;
+		this->_type = rhs.getType();
+		this->_brain = new Brain(*rhs.getBrain());
+	}
+	return *this;
+}
+
 Dog	&Dog::operator=(const Dog &rhs)
 {
-	this->_type = rhs._type;
-	this->_brain = new Brain(*rhs._brain);
-	return (*this);
+	if (this != &rhs)
+	{		
+		delete this->_brain;
+		this->_type = rhs._type;
+		this->_brain = new Brain(*rhs._brain);
+	}
+	return *this;
 }
 
 void	Dog::makeSound(void) const

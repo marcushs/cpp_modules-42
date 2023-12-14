@@ -6,11 +6,11 @@
 #    By: hleung <hleung@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/13 13:05:37 by hleung            #+#    #+#              #
-#    Updated: 2023/12/13 13:05:48 by hleung           ###   ########.fr        #
+#    Updated: 2023/12/14 11:14:50 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	animalFarm
+NAME		=	materia
 CC			=	c++
 CFLAG		=	-Wall -Wextra -Werror -std=c++98
 RM			=	rm -rf
@@ -21,12 +21,9 @@ CLS_DIR		=	class/
 OBJ_DIR		=	.obj/
 
 SRC_LIST	=	main.cpp
-CLS_LIST	=	Animal.cpp \
-				Brain.cpp \
-				Cat.cpp \
-				Dog.cpp \
-				WrongAnimal.cpp \
-				WrongCat.cpp
+CLS_LIST	=	AMateria.cpp \
+				Cure.cpp \
+				Ice.cpp
 SRCS		=	${addprefix ${SRC_DIR}, ${SRC_LIST}}
 SRCS		+=	${addprefix ${CLS_DIR}, ${CLS_LIST}}
 OBJS		=	${addprefix ${OBJ_DIR}, ${SRCS:.cpp=.o}}

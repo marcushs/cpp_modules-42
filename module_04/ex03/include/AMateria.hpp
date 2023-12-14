@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:08:34 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/13 13:20:43 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/14 12:32:41 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ public:
 	AMateria(void);
 	AMateria(std::string const &type);
 	AMateria(const AMateria &src);
-	~AMateria(void);
+	virtual ~AMateria(void);
 
+	AMateria	&operator=(const AMateria &rhs);
 	std::string const	&getType(void) const; //Returns the materia type
 	virtual AMateria	*clone(void) const = 0;
 	virtual void		use(ICharacter &target);
 
 protected:
-
+	std::string	_type;
 
 };
 

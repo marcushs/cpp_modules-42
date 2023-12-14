@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 07:31:23 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/14 09:54:52 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/14 10:01:52 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,24 @@ int	main(void)
 		delete dog;
 		delete dog2;
 		delete cat1;
+	}
+
+	{
+		Dog basic;
+		
+		std::cout << std::endl;
+		basic.getBrain()->setIdea(0, "IDEA");
+		std::cout << basic.getBrain()->getIdea(0) << std::endl;
+		
+		Dog tmp = basic;
+		
+		std::cout << std::endl;
+		std::cout << tmp.getBrain()->getIdea(0) << std::endl;
+		std::cout << std::endl;
+		tmp.getBrain()->setIdea(0, "HELLO");
+		std::cout << tmp.getBrain()->getIdea(0) << std::endl;
+		std::cout << basic.getBrain()->getIdea(0) << std::endl;
+		
 	}
 
 }

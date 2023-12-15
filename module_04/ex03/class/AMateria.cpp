@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:08:25 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/14 12:59:01 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/15 09:37:40 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ AMateria	&AMateria::operator=(const AMateria &rhs)
 	return *this;
 }
 
-/*----------------------------- Member Functions ------------------------------*/
+/*--------------------------------- Getters ----------------------------------*/
 
 std::string const	&AMateria::getType(void) const 
 {
 	return this->_type;
 }
+
+/*----------------------------- Member Functions ------------------------------*/
 
 void	AMateria::use(ICharacter &target) {(void)target;}

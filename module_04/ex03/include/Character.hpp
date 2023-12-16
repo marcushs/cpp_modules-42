@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 08:19:16 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/15 11:56:43 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/16 16:36:27 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ public:
 	std::string const	&getName(void) const;
 	AMateria			*getMateria(int i) const;
 
-	void	incrementFloorSize(void);
-
 	void	equip(AMateria* m);
 	void	unequip(int idx);
 	void	use(int idx, ICharacter& target);
@@ -39,7 +37,7 @@ private:
 	std::string			_name;
 	static const int	_nbItem = 4;
 	AMateria			*_inventory[Character::_nbItem];
-	unsigned int		_floorSize = 0;
+	unsigned int		_floorSize;
 	AMateria			**_floor;
 };
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:19:30 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/14 12:56:45 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/16 16:20:45 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 Ice::Ice(void) : AMateria("ice") {}
 
-Ice::Ice(const Ice &src)
+Ice::Ice(const Ice &src) : AMateria("ice")
 {
 	*this = src;
 }

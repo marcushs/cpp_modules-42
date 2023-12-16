@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:19:38 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/14 12:57:34 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/16 16:20:28 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 Cure::Cure(void) : AMateria("cure") {}
 
-Cure::Cure(const Cure &src)
+Cure::Cure(const Cure &src) : AMateria("cure")
 {
 	*this = src;
 }

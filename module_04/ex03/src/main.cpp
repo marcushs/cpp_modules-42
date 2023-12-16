@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:12:31 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/16 16:46:26 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/16 16:48:56 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ int	main(void)
 
 	bob->use(0, *max);
 	max->use(0, *bob);
+
+	bob->unequip(1);
+	max->unequip(1);
+	bob->unequip(0);
+	max->unequip(0);
 	delete ice;
 	delete cure;
 	delete bob;

@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 08:20:33 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/16 16:46:08 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/16 16:51:56 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,14 +113,15 @@ void	Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= this->_nbItem)
 	{
-		std::cout << "* INDEX SHOULD BE IN RANGE < 0 - "
+		std::cout << this->_name << ": " << "* INDEX SHOULD BE IN RANGE < 0 - "
 		<< this->_nbItem << " *" << std::endl;
 		return ;
 	}
 
 	if (!this->_inventory[idx])
 	{
-		std::cout << "* INVENTORY SLOT HAS NOTHING TO UNEQUIP *" << std::endl;
+		std::cout << this->_name << ": "
+		<< "* INVENTORY SLOT HAS NOTHING TO UNEQUIP *" << std::endl;
 		return ;
 	}
 	
@@ -129,7 +130,7 @@ void	Character::unequip(int idx)
 
 	for(int i = 0; this->_floor[i]; i++)
 		newFloor[i] = this->_floor[i];
-	
+
 	newFloor[this->_floorSize - 1] = this->_inventory[idx];
 	std::cout << "* " << this->_name << " dropped "
 	<< this->_inventory[idx]->getType() << " from his inventory *" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 08:20:33 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/16 16:51:56 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/17 17:32:07 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,11 @@ Character::~Character(void)
 	for (int i = 0; i < Character::_nbItem; i++)
 		if (this->_inventory[i])
 			delete this->_inventory[i];
-	
+
 	for (unsigned int i = 0; i < this->_floorSize; i++)
 		delete this->_floor[i];
 
+	delete [] this->_floor;
 	std::cout << "* Destroyed Character " << this->_name << " *" << std::endl;
 }
 
@@ -128,10 +129,11 @@ void	Character::unequip(int idx)
 	this->_floorSize++;
 	AMateria	**newFloor = new AMateria *[this->_floorSize];
 
-	for(int i = 0; this->_floor[i]; i++)
+	for(unsigned int i = 0; i < this->_floorSize - 1; i++)
 		newFloor[i] = this->_floor[i];
 
 	newFloor[this->_floorSize - 1] = this->_inventory[idx];
+	this->_floor = newFloor;
 	std::cout << "* " << this->_name << " dropped "
 	<< this->_inventory[idx]->getType() << " from his inventory *" << std::endl;
 	this->_inventory[idx] = NULL;

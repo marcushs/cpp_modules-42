@@ -6,7 +6,7 @@
 #    By: hleung <hleung@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/13 13:05:37 by hleung            #+#    #+#              #
-#    Updated: 2023/12/15 09:21:53 by hleung           ###   ########.fr        #
+#    Updated: 2023/12/18 11:26:23 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRC_LIST	=	main.cpp
 CLS_LIST	=	AMateria.cpp \
 				Character.cpp \
 				Cure.cpp \
-				Ice.cpp
+				Ice.cpp \
+				MateriaSource.cpp
 SRCS		=	${addprefix ${SRC_DIR}, ${SRC_LIST}}
 SRCS		+=	${addprefix ${CLS_DIR}, ${CLS_LIST}}
 OBJS		=	${addprefix ${OBJ_DIR}, ${SRCS:.cpp=.o}}

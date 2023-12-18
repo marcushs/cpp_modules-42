@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 08:20:33 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/17 19:33:27 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/18 13:23:07 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ Character	&Character::operator=(const Character &rhs)
 	if (this != &rhs)
 	{
 		this->_name = rhs._name;
-		for (int i = 0; i < Character::_nbItem; i++)
+		for (unsigned int i = 0; i < Character::_nbItem; i++)
 		{
 			if (this->_inventory[i])
 				delete this->_inventory[i];
@@ -82,10 +82,13 @@ Character	&Character::operator=(const Character &rhs)
 			delete this->_floor[i];
 		if (this->_floorSize)
 			delete [] this->_floor;
-		this->_floorSize = rhs._floorSize;
-		this->_floor = new AMateria *[this->_floorSize];
-		for (unsigned int i = 0; i < rhs._floorSize; i++)
-			this->_floor[i] = rhs._floor[i]->clone();
+		if (rhs._floorSize)
+		{	
+			this->_floorSize = rhs._floorSize;
+			this->_floor = new AMateria *[this->_floorSize];
+			for (unsigned int i = 0; i < rhs._floorSize; i++)
+				this->_floor[i] = rhs._floor[i]->clone();
+		}
 	}
 	return *this;
 }

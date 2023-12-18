@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:08:34 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/16 16:16:51 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/18 13:14:02 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ public:
 	virtual ~AMateria(void);
 
 	AMateria	&operator=(const AMateria &rhs);
-	std::string const	&getType(void) const; //Returns the materia type
+	std::string const	&getType(void) const; 
 	virtual AMateria	*clone(void) const = 0;
 	virtual void		use(ICharacter &target);
+	bool	isLearned;
 
 protected:
 	std::string	_type;

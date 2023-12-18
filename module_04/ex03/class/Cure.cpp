@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:19:38 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/16 16:20:28 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/18 10:52:04 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 /*------------------------------- Constructors -------------------------------*/
 
-Cure::Cure(void) : AMateria("cure") {}
+Cure::Cure(void) : AMateria("cure") {this->isLearned = false;}
 
 Cure::Cure(const Cure &src) : AMateria("cure")
 {
 	*this = src;
+	this->isLearned = false;
 }
 
 /*-------------------------------- Destructor --------------------------------*/
@@ -31,12 +32,14 @@ Cure::~Cure(void) {}
 Cure	&Cure::operator=(const Cure &rhs)
 {
 	this->_type = rhs._type;
+	this->isLearned = rhs.isLearned;
 	return *this;
 }
 
 AMateria	&Cure::operator=(const AMateria &rhs)
 {
 	this->_type = rhs.getType();
+	this->isLearned = rhs.isLearned;
 	return *this;
 }
 

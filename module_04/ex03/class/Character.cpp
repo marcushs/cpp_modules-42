@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 08:20:33 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/17 17:32:07 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/17 19:33:27 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,16 @@ Character::Character(const std::string name) :_name(name)
 
 Character::Character(const Character &src)
 {
-	*this = src;
+	this->_name = src._name;
+	this->_floor = NULL;
+	this->_floorSize = 0;
+	for (int i = 0; i < Character::_nbItem; i++)
+	{
+		if (src._inventory[i])
+			this->_inventory[i] = src._inventory[i]->clone();
+		else
+			this->_inventory[i] = NULL;
+	}
 }
 
 /*-------------------------------- Destructor --------------------------------*/
@@ -46,11 +55,10 @@ Character::~Character(void)
 	for (int i = 0; i < Character::_nbItem; i++)
 		if (this->_inventory[i])
 			delete this->_inventory[i];
-
 	for (unsigned int i = 0; i < this->_floorSize; i++)
 		delete this->_floor[i];
-
-	delete [] this->_floor;
+	if (this->_floorSize)
+		delete [] this->_floor;
 	std::cout << "* Destroyed Character " << this->_name << " *" << std::endl;
 }
 
@@ -61,15 +69,23 @@ Character	&Character::operator=(const Character &rhs)
 	if (this != &rhs)
 	{
 		this->_name = rhs._name;
-		this->_floor = NULL;
-		this->_floor[0] = NULL;
-		this->_floorSize = 0;
-		for (int i = 0; rhs._inventory[i]; i++)
+		for (int i = 0; i < Character::_nbItem; i++)
 		{
 			if (this->_inventory[i])
 				delete this->_inventory[i];
-			this->_inventory[i] = rhs._inventory[i]->clone();
+			if (rhs._inventory[i])
+				this->_inventory[i] = rhs._inventory[i]->clone();
+			else
+				this->_inventory[i] = NULL;
 		}
+		for (unsigned int i = 0; i < this->_floorSize; i++)
+			delete this->_floor[i];
+		if (this->_floorSize)
+			delete [] this->_floor;
+		this->_floorSize = rhs._floorSize;
+		this->_floor = new AMateria *[this->_floorSize];
+		for (unsigned int i = 0; i < rhs._floorSize; i++)
+			this->_floor[i] = rhs._floor[i]->clone();
 	}
 	return *this;
 }
@@ -102,7 +118,7 @@ void	Character::equip(AMateria* m)
 		{
 			this->_inventory[i] = m->clone();
 			std::cout << "* " << this->_name << " equipped " << m->getType()
-			<< " to his inventory *" << std::endl;
+			<< " to his inventory at slot " << i << " *" << std::endl;
 			return ;
 		}
 	}
@@ -128,14 +144,14 @@ void	Character::unequip(int idx)
 	
 	this->_floorSize++;
 	AMateria	**newFloor = new AMateria *[this->_floorSize];
-
 	for(unsigned int i = 0; i < this->_floorSize - 1; i++)
 		newFloor[i] = this->_floor[i];
-
 	newFloor[this->_floorSize - 1] = this->_inventory[idx];
+	if (this->_floor)
+		delete [] this->_floor;
 	this->_floor = newFloor;
-	std::cout << "* " << this->_name << " dropped "
-	<< this->_inventory[idx]->getType() << " from his inventory *" << std::endl;
+	std::cout << "* " << this->_name << " dropped " << this->_inventory[idx]->getType()
+	<< " from his inventory at slot " << idx << " *"<< std::endl;
 	this->_inventory[idx] = NULL;
 }
 

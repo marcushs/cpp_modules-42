@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hleung <hleung@student.42.fr>              +#+  +:+       +#+         #
+#    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 14:13:13 by hleung            #+#    #+#              #
-#    Updated: 2023/12/18 15:23:31 by hleung           ###   ########.fr        #
+#    Updated: 2023/12/19 09:00:49 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ CLS_DIR		=	class/
 OBJ_DIR		=	.obj/
 
 SRC_LIST	=	main.cpp
-CLS_LIST	=	Bureaucrat.cpp \
+CLS_LIST	=	Bureaucrat.cpp 
 SRCS		=	${addprefix ${SRC_DIR}, ${SRC_LIST}}
 SRCS		+=	${addprefix ${CLS_DIR}, ${CLS_LIST}}
 OBJS		=	${addprefix ${OBJ_DIR}, ${SRCS:.cpp=.o}}

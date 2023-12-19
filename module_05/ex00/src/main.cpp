@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:13:54 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/19 09:51:22 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/19 10:29:52 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	main(void)
 	Bureaucrat	b("b", 100);
 	Bureaucrat	c(b);
 	Bureaucrat	d("d", 200); // Output: Grade too low! Grade reset to 150
-	Bureaucrat	e("e", -2); // Output: Grade too high! Grade reset to 0
+	Bureaucrat	e("e", -2); // Output: Grade too high! Grade reset to 1
 
 	std::cout << a; // Output: Default, bureaucrat grade 150
 	std::cout << b; // Output: b, bureaucrat grade 100
 	std::cout << c; // Output: b, bureaucrat grade 100
 	std::cout << d; // Output: d, bureaucrat grade 150
-	std::cout << e; // Output: e, bureaucrat grade 0
+	std::cout << e; // Output: e, bureaucrat grade 1
 
 	try
 	{
@@ -35,6 +35,8 @@ int	main(void)
 		std::cerr << e.what() << std::endl;
 	}
 
+	// Output: Grade too low! Grade reset to 150
+
 	try
 	{
 		e.incrementGrade();
@@ -43,6 +45,8 @@ int	main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+
+	// Output: Grade too high! Grade reset to 1
 
 	try
 	{
@@ -53,8 +57,9 @@ int	main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	std::cout << e;
+
+	std::cout << e; // Output: e, bureaucrat grade 11
 	a = e;
-	std::cout << a;
+	std::cout << a; // Output: Default, bureaucrat grade 11
 
 }

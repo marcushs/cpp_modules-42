@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:14:28 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/19 09:18:42 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/19 10:26:43 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Bureaucrat
 	class GradeTooHighException : public std::exception
 	{
 	public:
-		const char* what() const throw() {return "Grade too high! Grade reset to 0";}
+		const char* what() const throw() {return "Grade too high! Grade reset to 1";}
 	};
 	
 	class GradeTooLowException : public std::exception

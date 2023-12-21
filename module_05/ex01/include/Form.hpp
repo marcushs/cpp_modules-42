@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:58:31 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/19 10:39:46 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/21 17:51:27 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FORM_HPP
 # include <string>
 # include <iostream>
+# include "Bureaucrat.hpp"
 
 class Form
 {
@@ -21,17 +22,18 @@ class Form
 	class GradeTooHighException : public std::exception
 	{
 	public:
-		const char* what() const throw() {return "Grade too high! Grade reset to 0";}
+		const char* what() const throw() {return "Grade too high!";}
 	};
 	
 	class GradeTooLowException : public std::exception
 	{
 	public:
-		const char* what() const throw() {return "Grade too low! Grade reset to 150";}
+		const char* what() const throw() {return "Grade too low!";}
 	};
 
 public:
 	Form(void);
+	Form(const std::string name, const int gradeToSign, const int gradeToExec);
 	Form(const Form &src);
 	~Form(void);
 
@@ -39,8 +41,10 @@ public:
 
 	const std::string	&getName(void) const;
 	bool				getIsSigned(void) const;
-	const int			getGradeToSign(void) const;
-	const int			getGradeToExec(void) const;
+	int					getGradeToSign(void) const;
+	int					getGradeToExec(void) const;
+
+	void	beSigned(const Bureaucrat &bureaucrat);
 
 private:
 	const std::string	_name;

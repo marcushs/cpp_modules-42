@@ -6,11 +6,11 @@
 #    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 14:13:13 by hleung            #+#    #+#              #
-#    Updated: 2023/12/19 09:59:38 by hleung           ###   ########.fr        #
+#    Updated: 2023/12/21 17:10:22 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	bureaucrat
+NAME		=	form
 CC			=	c++
 CFLAG		=	-Wall -Wextra -Werror -std=c++98
 RM			=	rm -rf

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:14:28 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/21 17:40:16 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/22 08:56:13 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 # include <string>
 # include <exception>
 # include <iostream>
+# include "Form.hpp"
 
+class Form;
 class Bureaucrat
 {
 
@@ -42,6 +44,7 @@ public:
 	int					getGrade(void) const;
 	void				incrementGrade(void);
 	void				decrementGrade(void);
+	void				signForm(const Form &form);
 
 private:
 	const std::string	_name;

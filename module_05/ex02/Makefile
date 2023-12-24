@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hleung <hleung@student.42.fr>              +#+  +:+       +#+         #
+#    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 14:13:13 by hleung            #+#    #+#              #
-#    Updated: 2023/12/22 13:57:18 by hleung           ###   ########.fr        #
+#    Updated: 2023/12/24 16:52:16 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ OBJ_DIR		=	.obj/
 SRC_LIST	=	main.cpp
 CLS_LIST	=	AForm.cpp \
 				Bureaucrat.cpp \
+				PresidentialPardonForm.cpp \
 				RobotomyRequestForm.cpp \
 				ShrubberyCreationForm.cpp
 SRCS		=	${addprefix ${SRC_DIR}, ${SRC_LIST}}

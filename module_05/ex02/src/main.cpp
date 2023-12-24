@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hleung <hleung@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:13:54 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/22 14:11:17 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/24 17:11:46 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 #include "../include/AForm.hpp"
 #include "../include/ShrubberyCreationForm.hpp"
 #include "../include/RobotomyRequestForm.hpp"
+#include "../include/PresidentialPardonForm.hpp"
 
-int	main(void)
+int main(void)
 {
 	// {
 	// 	ShrubberyCreationForm a("home");
 	// 	ShrubberyCreationForm b(a);
-	// 	Bureaucrat bob("bob", 137);
+	// 	Bureaucrat bob("bob", 145);
+	// 	Bureaucrat max("max", 137);
 
 	// 	std::cout << a;
 	// 	std::cout << std::endl;
@@ -28,13 +30,14 @@ int	main(void)
 	// 	std::cout << std::endl;
 	// 	a.beSigned(bob);
 	// 	std::cout << a;
-	// 	a.execute(bob);
+	// 	max.executeForm(a);
 	// }
-	
+
 	// {
 	// 	RobotomyRequestForm a("target");
 	// 	RobotomyRequestForm b(a);
-	// 	Bureaucrat bob("bob", 45);
+	// 	Bureaucrat bob("bob", 72);
+	// 	Bureaucrat max("max", 45);
 
 	// 	std::cout << a;
 	// 	std::cout << std::endl;
@@ -42,6 +45,21 @@ int	main(void)
 	// 	std::cout << std::endl;
 	// 	a.beSigned(bob);
 	// 	std::cout << a;
-	// 	a.execute(bob);
+	// 	max.executeForm(a);
 	// }
+
+	{
+		PresidentialPardonForm a("target");
+		PresidentialPardonForm b(a);
+		Bureaucrat bob("bob", 25);
+		Bureaucrat max("max", 5);
+
+		std::cout << a;
+		std::cout << std::endl;
+		std::cout << b;
+		std::cout << std::endl;
+		a.beSigned(bob);
+		std::cout << a;
+		max.executeForm(a);
+	}
 }

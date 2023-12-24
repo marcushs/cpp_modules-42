@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:13:54 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/21 17:34:07 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/24 20:22:32 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(void)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 
 	try
@@ -32,7 +32,7 @@ int	main(void)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 	
 	std::cout << a; // Output: Default, bureaucrat grade 150
@@ -71,7 +71,19 @@ int	main(void)
 	}
 
 	std::cout << c; // Output: b, bureaucrat grade 11
+
+	try
+	{
+		for (int i = 0; i < 6; i++)
+			c.incrementGrade();
+	}
+	catch(const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << c; // Output: b, bureaucrat grade 5
 	a = c;
-	std::cout << a; // Output: Default, bureaucrat grade 11
+	std::cout << a; // Output: Default, bureaucrat grade 5
 
 }

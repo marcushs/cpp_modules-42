@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:13:30 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/24 20:09:47 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/24 20:46:26 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class AForm;
 class Intern
 {
-
+	//looser exception specification on overriding virtual function error when tried to create new constructor to take argument
 	class	NoFormException : public std::exception
 	{
 		public:

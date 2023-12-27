@@ -6,7 +6,7 @@
 #    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/24 20:31:06 by hleung            #+#    #+#              #
-#    Updated: 2023/12/25 18:53:48 by hleung           ###   ########.fr        #
+#    Updated: 2023/12/26 14:54:01 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ ${NAME}:		${OBJS}
 				@echo "Done!"
 
 ${OBJ_DIR}:
-				mkdir -p ${OBJ_DIR}${SRC_DIR} ${OBJ_DIR}${CLS_DIR}
+				@mkdir -p ${OBJ_DIR}${SRC_DIR} ${OBJ_DIR}${CLS_DIR}
 
 clean:
 				@${RM} ${OBJ_DIR}

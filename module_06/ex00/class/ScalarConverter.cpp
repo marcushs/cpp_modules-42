@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 18:43:08 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/27 20:45:33 by hleung           ###   ########.fr       */
+/*   Updated: 2023/12/27 21:28:28 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #include <climits>
 #include <cmath>
 #include <cstdlib>
+
+
+/*-------------------------------- Prototypes --------------------------------*/
 
 static int	trimWhitespace(std::string &str);
 static unsigned int	detectType(std::string &str);
@@ -58,6 +61,8 @@ void	ScalarConverter::convert(std::string s)
 	}
 	print(s, type);
 }
+
+/*----------------------------- Helper Functions -----------------------------*/
 
 static int	trimWhitespace(std::string &str)
 {

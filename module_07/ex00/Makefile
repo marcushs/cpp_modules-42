@@ -6,11 +6,11 @@
 #    By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/28 10:25:16 by hleung            #+#    #+#              #
-#    Updated: 2023/12/28 10:25:18 by hleung           ###   ########.fr        #
+#    Updated: 2023/12/28 17:41:15 by hleung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	identify
+NAME		=	whatever
 CC			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 RM			=	rm -rf
@@ -20,9 +20,7 @@ SRC_DIR		=	src/
 CLS_DIR		=	class/
 OBJ_DIR		=	.obj/
 
-SRC_LIST	=	helpers.cpp \
-				main.cpp
-CLS_LIST	=	Base.cpp
+SRC_LIST	=	main.cpp
 SRCS		=	${addprefix ${SRC_DIR}, ${SRC_LIST}}
 SRCS		+=	${addprefix ${CLS_DIR}, ${CLS_LIST}}
 OBJS		=	${addprefix ${OBJ_DIR}, ${SRCS:.cpp=.o}}

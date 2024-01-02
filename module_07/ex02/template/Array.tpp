@@ -6,13 +6,12 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:39:39 by hleung            #+#    #+#             */
-/*   Updated: 2024/01/02 17:39:12 by hleung           ###   ########.fr       */
+/*   Updated: 2024/01/02 19:49:39 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_TPP
 # define ARRAY_TPP
-# include "../include/Array.hpp"
 
 /*------------------------------- Constructors -------------------------------*/
 
@@ -78,6 +77,5 @@ unsigned int	Array<T>::size() const
 {
 	return this->_size;
 }
-
 
 #endif

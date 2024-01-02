@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:36:25 by hleung            #+#    #+#             */
-/*   Updated: 2024/01/02 17:27:05 by hleung           ###   ########.fr       */
+/*   Updated: 2024/01/02 19:50:01 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <exception>
 # include <iostream>
 
-template< typename T >
+template < typename T >
 class Array
 {
 
@@ -43,5 +43,7 @@ private:
 
 template < typename T >
 std::ostream	&operator<<(std::ostream &o, const Array<T> &rhs);
+
+#include "../template/Array.tpp"
 
 #endif

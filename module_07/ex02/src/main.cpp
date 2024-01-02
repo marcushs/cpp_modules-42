@@ -6,11 +6,11 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:46:05 by hleung            #+#    #+#             */
-/*   Updated: 2024/01/02 19:20:49 by hleung           ###   ########.fr       */
+/*   Updated: 2024/01/02 19:50:16 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../template/Array.tpp"
+#include "../include/Array.hpp"
 #include <iostream>
 #include <ctime>
 #include <cstdlib>

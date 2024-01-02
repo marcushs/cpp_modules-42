@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:36:25 by hleung            #+#    #+#             */
-/*   Updated: 2024/01/02 19:50:01 by hleung           ###   ########.fr       */
+/*   Updated: 2024/01/02 20:15:40 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ private:
 template < typename T >
 std::ostream	&operator<<(std::ostream &o, const Array<T> &rhs);
 
-#include "../template/Array.tpp"
+#include "../template/Array.tpp" //https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl, https://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file
 
 #endif

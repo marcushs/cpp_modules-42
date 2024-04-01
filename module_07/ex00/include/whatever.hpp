@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:47:57 by hleung            #+#    #+#             */
-/*   Updated: 2023/12/28 17:08:46 by hleung           ###   ########.fr       */
+/*   Updated: 2024/04/01 14:00:57 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	swap(T &x, T &y)
 template< typename T >
 const T	&max(const T &x, const T &y)
 {
-	return (x >= y ? x : y);
+	return (x > y ? x : y);
 }
 
 template< typename T >
 const T	&min(const T &x, const T &y)
 {
-	return (x <= y ? x : y);
+	return (x < y ? x : y);
 }
 #endif

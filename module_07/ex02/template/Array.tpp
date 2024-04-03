@@ -49,6 +49,8 @@ Array<T>	&Array<T>::operator=(const Array<T> &rhs)
 	if (this == &rhs)
 		return (*this);
 	this->_size = rhs._size;
+	if (this->_data)
+		delete [] this->_data;
 	this->_data = new T[this->_size];
 	for(unsigned int i = 0; i < this->_size; i++)
 		this->_data[i] = rhs._data[i];

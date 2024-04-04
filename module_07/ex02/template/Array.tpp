@@ -30,7 +30,12 @@ Array<T>::Array(unsigned int n) : _size(n)
 template < typename T >
 Array<T>::Array(const Array<T> &src)
 {
-	*this = src;
+	if (this == &src)
+		return ;
+	this->_size = src._size;
+	this->_data = new T[this->_size];
+	for(unsigned int i = 0; i < this->_size; i++)
+		this->_data[i] = src._data[i];
 }
 
 /*-------------------------------- Destructor --------------------------------*/
@@ -59,6 +64,14 @@ Array<T>	&Array<T>::operator=(const Array<T> &rhs)
 
 template < typename T >
 T	&Array<T>::operator[](const unsigned int rhs)
+{
+	if (rhs >= this->_size)
+		throw Array::OutOfRangeException();
+	return this->_data[rhs];
+}
+
+template < typename T >
+const T	&Array<T>::operator[](const unsigned int rhs) const
 {
 	if (rhs >= this->_size)
 		throw Array::OutOfRangeException();

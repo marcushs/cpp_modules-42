@@ -33,6 +33,7 @@ public:
 
 	Array<T>	&operator=(const Array<T> &rhs);
 	T	&operator[](const unsigned int rhs);
+	const T	&operator[](const unsigned int rhs) const;
 
 	unsigned int size() const;
 

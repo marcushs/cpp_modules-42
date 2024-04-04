@@ -15,6 +15,8 @@
 #include <ctime>
 #include <cstdlib>
 
+#define MAX_VAL 750
+
 int main( void ) 
 {
 	srand(time(NULL)); //set random seed
@@ -67,6 +69,7 @@ int main( void )
 	c = b;
 	std::cout << std::endl;
 
+
 	/* Array a after */
 	std::cout << "Array a after : ";
 	for (unsigned int i = 0; i < a.size(); i++)
@@ -97,6 +100,20 @@ int main( void )
 	}
 	std::cout << std::endl;
 
+	/* Array d */
+	Array<int> d(c);
+
+	std::cout << "Array d : ";
+	std::cout << d << std::endl;
+	std::cout << "Array d : ";
+	for (unsigned int i = 0; i < d.size(); i++)
+	{
+		std::cout << d[i];
+		if (i != d.size() - 1)
+			std::cout << " ";
+	}
+	std::cout << std::endl;
+
 	/* Out of range tests */
 	try
 	{
@@ -104,15 +121,15 @@ int main( void )
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 	
-	try
-	{
-		b[-4] = 77;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	// try
+	// {
+	// 	b[-4] = 77;
+	// }
+	// catch(const std::exception& e)
+	// {
+	// 	std::cout << e.what() << std::endl;
+	// }
 } 

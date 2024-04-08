@@ -17,60 +17,67 @@
 
 int	main(void)
 {
-	// {
-	// 	srand(time(NULL));
-	// 	Span a(10);
+	{
+		srand(time(NULL));
+		Span a(10);
 
-	// 	for (int i = 0; i < 11; i++)
-	// 	{
-	// 		try
-	// 		{
-	// 			a.addNumber(rand() % 100);
-	// 		}
-	// 		catch(const std::exception& e)
-	// 		{
-	// 			std::cerr << e.what() << std::endl;
-	// 		}
-	// 	}
+		for (int i = 0; i < 11; i++)
+		{
+			try
+			{
+				a.addNumber(rand() % 100);
+			}
+			catch(const std::exception& e)
+			{
+				std::cout << e.what() << std::endl;
+			}
+		}
 
-	// 	Span b(a);
-	// 	a.getNumbers()[0] = 100;
-	// 	std::cout << "Span a : ";
-	// 	for (unsigned int i = 0; i < a.getCount(); i++)
-	// 	{
-	// 		std::cout << a.getNumbers()[i];
-	// 		if (i != a.getCount() - 1)
-	// 			std::cout << ' ';
-	// 	}
+		Span b(a);
+		a.getNumbers()[0] = 100;
+		std::cout << "Span a : ";
+		for (unsigned int i = 0; i < a.getCount(); i++)
+		{
+			std::cout << a.getNumbers()[i];
+			if (i != a.getCount() - 1)
+				std::cout << ' ';
+		}
 
-	// 	std::cout << std::endl;
+		std::cout << std::endl;
 
-	// 	std::cout << "Span b : ";
-	// 	for (unsigned int i = 0; i < b.getCount(); i++)
-	// 	{
-	// 		std::cout << b.getNumbers()[i];
-	// 		if (i != b.getCount() - 1)
-	// 			std::cout << ' ';
-	// 	}
+		std::cout << "Span b : ";
+		for (unsigned int i = 0; i < b.getCount(); i++)
+		{
+			std::cout << b.getNumbers()[i];
+			if (i != b.getCount() - 1)
+				std::cout << ' ';
+		}
 
-	// 	std::cout << std::endl;
+		std::cout << std::endl;
 		
-	// 	std::cout << "Span a's longest span is : " << a.longestSpan() << std::endl;
-	// 	std::cout << "Span b's shortest span is : " << a.shortestSpan() << std::endl;
+		std::cout << "Span a's longest span is : " << a.longestSpan() << std::endl;
+		std::cout << "Span b's shortest span is : " << a.shortestSpan() << std::endl;
 
-	// 	Span	c(10);
-	// 	std::vector<int>::iterator i = b.getNumbers().begin() + 2;
-	// 	c.addNumber(i, i + 3);
-	// 	std::cout << "Span c : ";
-	// 	for (unsigned int i = 0; i < c.getNumbers().size(); i++)
-	// 	{
-	// 		std::cout << c.getNumbers()[i];
-	// 		if (i != c.getCount() - 1)
-	// 			std::cout << ' ';
-	// 	}
+		Span	c(10);
+		std::vector<int>::iterator i = b.getNumbers().begin() + 2;
+		try
+		{
+			c.addNumber(i, i + 3);
+		}
+		catch(const std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+		std::cout << "Span c : ";
+		for (unsigned int i = 0; i < c.getNumbers().size(); i++)
+		{
+			std::cout << c.getNumbers()[i];
+			if (i != c.getCount() - 1)
+				std::cout << ' ';
+		}
 
-	// 	std::cout << std::endl;
-	// }
+		std::cout << std::endl;
+	}
 
 	// {
 	// 	Span sp = Span(5);
@@ -79,32 +86,32 @@ int	main(void)
 	// 	sp.addNumber(17);
 	// 	sp.addNumber(9);
 	// 	sp.addNumber(11);
-	// 	std::cout << sp.shortestSpan() << std::endl;
-	// 	std::cout << sp.longestSpan() << std::endl;
+	// 	std::cout << "Longest span is  : " << sp.shortestSpan() << std::endl;
+	// 	std::cout << "Shortest span is : " << sp.longestSpan() << std::endl;
 	// 	return 0;
 	// }
 
-	{
-		Span a(10000);
-		srand(time(NULL));
-		try
-		{
-			for (int i = 0; i < 10000; i++)
-				a.addNumber(rand());
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << '\n';
-		}
-		std::cout << "Span a : " << std::endl;
-		for (unsigned int i = 0; i < a.getNumbers().size(); i++)
-		{
-			std::cout << a.getNumbers()[i];
-			if (a.getNumbers().size() - 1)
-				std::cout << ' ';
-		}
-		std::cout << std::endl;
-		std::cout << a.longestSpan() << std::endl;
-		std::cout << a.shortestSpan() << std::endl;
-	}
+	// {
+	// 	Span a(10000);
+	// 	srand(time(NULL));
+	// 	try
+	// 	{
+	// 		for (int i = 0; i < 10000; i++)
+	// 			a.addNumber(rand());
+	// 	}
+	// 	catch(const std::exception& e)
+	// 	{
+	// 		std::cout << e.what() << std::endl;
+	// 	}
+	// 	std::cout << "Span a : " << std::endl;
+	// 	for (unsigned int i = 0; i < a.getNumbers().size(); i++)
+	// 	{
+	// 		std::cout << a.getNumbers()[i];
+	// 		if (a.getNumbers().size() - 1)
+	// 			std::cout << ' ';
+	// 	}
+	// 	std::cout << std::endl;
+	// 	std::cout << "Longest span is  : " << a.longestSpan() << std::endl;
+	// 	std::cout << "Shortest span is : " << a.shortestSpan() << std::endl;
+	// }
 }

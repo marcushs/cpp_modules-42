@@ -67,9 +67,11 @@ int	Span::shortestSpan()
 	std::vector<int>	tmp = this->_numbers;
 	std::sort(tmp.begin(), tmp.end());
 	int span = -1;
-	for (size_t i = 0; i < size - 2; i++)
-		if (span < 0 || abs(tmp[i] - tmp[i + 1]) < span)
-			span = abs(tmp[i] - tmp[i + 1]);
+	for (std::vector<int>::iterator i = tmp.begin(); i != tmp.end() - 1; i++)
+	{
+		if (span < 0 || abs(*i - *(i + 1)) < span)
+			span = abs(*i - *(i + 1));
+	}
 	return span;
 }
 

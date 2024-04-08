@@ -36,7 +36,7 @@ int	main(void)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "Value not found" << std::endl;
+		std::cout << "Value not found" << std::endl;
 	}
 
 	try
@@ -45,7 +45,7 @@ int	main(void)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "Value not found" << std::endl;
+		std::cout << "Value not found" << std::endl;
 	}
 
     return 0;

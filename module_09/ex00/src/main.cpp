@@ -28,8 +28,8 @@ int	main(int argc, char **argv)
 	// 	return 2;
 	// }
 	BitcoinExchange btc;
-	if (btc.getData()["2001-42-42"] == btc.getData()::end);
-		std::cout << "map::end" << std::endl;
+	// if (btc.getData()["2001-42-42"] == btc.getData()::end);
+	// 	std::cout << "map::end" << std::endl;
 	// std::cout << ) << std::endl;
 
 	// ifs.close();

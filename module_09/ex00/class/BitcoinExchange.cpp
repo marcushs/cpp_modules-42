@@ -12,6 +12,8 @@
 
 #include "../include/BitcoinExchange.hpp"
 
+int	getDateSum(std::string &date);
+
 /*------------------------------- Constructors -------------------------------*/
 
 BitcoinExchange::BitcoinExchange()
@@ -30,11 +32,12 @@ BitcoinExchange::BitcoinExchange()
 	{
 		// std::cout << str << std::endl;
 		std::string key = str.substr(0, str.find(','));
-		float	value = strtof(str.substr(str.find(',') + 1, str.npos).c_str(), NULL);
+		getDateSum(key);
+		// float	value = strtof(str.substr(str.find(',') + 1, str.npos).c_str(), NULL);
 		// std::cout << key << ", ";
 		// std::cout << value << std::endl;
 		
-		this->_data.insert(std::make_pair(key, value));
+		// this->_data.insert(std::make_pair(key, value));
 	}
 	// std::cout << "opened db" << std::endl;
 	ifs.close();
@@ -69,3 +72,11 @@ std::map<std::string, float> &BitcoinExchange::getData()
 
 /*----------------------------- Member Functions -----------------------------*/
 
+int	getDateSum(std::string &date)
+{
+	std::string	strs[3] = {0};
+	std::istringstream	src(date);
+	while ()
+	std::cout << yr << std::endl;
+	return 0;
+}

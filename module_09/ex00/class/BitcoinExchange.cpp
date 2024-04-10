@@ -12,7 +12,6 @@
 
 #include "../include/BitcoinExchange.hpp"
 
-int	getDateSum(std::string &date);
 
 /*------------------------------- Constructors -------------------------------*/
 
@@ -30,16 +29,10 @@ BitcoinExchange::BitcoinExchange()
 	getline(ifs, str);
 	while (getline(ifs, str))
 	{
-		// std::cout << str << std::endl;
 		std::string key = str.substr(0, str.find(','));
-		getDateSum(key);
-		// float	value = strtof(str.substr(str.find(',') + 1, str.npos).c_str(), NULL);
-		// std::cout << key << ", ";
-		// std::cout << value << std::endl;
-		
-		// this->_data.insert(std::make_pair(key, value));
+		float	value = strtof(str.substr(str.find(',') + 1, str.npos).c_str(), NULL);
+		this->_data.insert(std::make_pair(key, value));
 	}
-	// std::cout << "opened db" << std::endl;
 	ifs.close();
 }
 
@@ -53,30 +46,15 @@ BitcoinExchange::~BitcoinExchange() {}
 
 BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &rhs)
 {
-	static_cast<void>(rhs);
-	// if (this != &rhs)
-	// {
-		
-	// }
+	if (this != &rhs)
+		this->_data = rhs._data;	
 	return (*this);
 }
 
 /*---------------------------------- Getter ----------------------------------*/
 
-std::map<std::string, float> &BitcoinExchange::getData()
-{
-	return this->_data;
-}
+const std::map<std::string, float> &BitcoinExchange::getData() const { return this->_data; }
 
 /*---------------------------------- Setter ----------------------------------*/
 
 /*----------------------------- Member Functions -----------------------------*/
-
-int	getDateSum(std::string &date)
-{
-	std::string	strs[3] = {0};
-	std::istringstream	src(date);
-	while ()
-	std::cout << yr << std::endl;
-	return 0;
-}

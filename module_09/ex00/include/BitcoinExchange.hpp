@@ -13,6 +13,8 @@
 #ifndef BITCOIN_EXCHANGE_HPP
 # define BITCOIN_EXCHANGE_HPP
 # include <iostream>
+# include <iomanip>
+# include <sstream>
 # include <fstream>
 # include <map>
 # include <string>
@@ -24,12 +26,11 @@ class BitcoinExchange
 
 public:
 	BitcoinExchange();
-	// BitcoinExchange(const std::ifstream &ifs);
 	BitcoinExchange(const BitcoinExchange &src);
 	~BitcoinExchange();
 
 	BitcoinExchange	&operator=(const BitcoinExchange &rhs);
-	std::map<std::string, float> &getData();
+	const std::map<std::string, float> &getData() const;
 
 private:
 	std::map<std::string, float>	_data;

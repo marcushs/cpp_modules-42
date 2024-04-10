@@ -28,6 +28,8 @@ int	main(int argc, char **argv)
 	// 	return 2;
 	// }
 	BitcoinExchange btc;
+	// std::map<std::string, float>::iterator itlow = btc.getData().lower_bound("2022-03-21");
+	// std::cout << itlow->second << std::endl;
 	// if (btc.getData()["2001-42-42"] == btc.getData()::end);
 	// 	std::cout << "map::end" << std::endl;
 	// std::cout << ) << std::endl;

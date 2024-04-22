@@ -20,7 +20,6 @@
 # include <string>
 # include <cstdlib>
 
-
 class BitcoinExchange
 {
 

@@ -29,6 +29,8 @@ BitcoinExchange::BitcoinExchange()
 	getline(ifs, str);
 	while (getline(ifs, str))
 	{
+		if (str.empty())
+			continue;
 		std::string key = str.substr(0, str.find(','));
 		float	value = strtof(str.substr(str.find(',') + 1, str.npos).c_str(), NULL);
 		this->_data.insert(std::make_pair(key, value));

@@ -12,21 +12,22 @@
 
 #include "../include/BitcoinExchange.hpp"
 #include <functional>
+#include <ctime>
 
 int	main(int argc, char **argv)
 {
-	// if (argc != 2)
-	// {
-	// 	std::cout << "Usage: btc <input file>" << std::endl;
-	// 	return 1;
-	// }
-	// std::ifstream ifs;
-	// ifs.open(argv[1], std::ifstream::in);
-	// if (!ifs.good())
-	// {
-	// 	std::cout << "Error: cannot open file " << argv[1] << std::endl;
-	// 	return 2;
-	// }
+	if (argc != 2)
+	{
+		std::cout << "Usage: btc <input file>" << std::endl;
+		return 1;
+	}
+	std::ifstream ifs;
+	ifs.open(argv[1], std::ifstream::in);
+	if (!ifs.good())
+	{
+		std::cout << "Error: cannot open file " << argv[1] << std::endl;
+		return 2;
+	}
 	BitcoinExchange btc;
 	std::map<std::string, float>::const_iterator itlow = btc.getData().lower_bound("2022-03-21");
 	std::cout << "lower_bound value is : " << itlow->second << std::endl;
@@ -38,5 +39,6 @@ int	main(int argc, char **argv)
 	// 	std::cout << "map::end" << std::endl;
 
 	// ifs.close();
+
 	return 0;
 }

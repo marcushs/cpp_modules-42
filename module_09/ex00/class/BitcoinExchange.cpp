@@ -17,21 +17,31 @@
 
 BitcoinExchange::BitcoinExchange()
 {
-	std::ifstream ifs;
-	std::string str;
+	std::ifstream	ifs;
+	std::string		str;
 	
 	ifs.open("../cpp_09/data.csv");
-	if (!ifs.good())
-	{
+	if (!ifs.good()) {
 		std::cout << "Error: cannot access database" << std::endl;
 		return ;
 	}
 	getline(ifs, str);
-	while (getline(ifs, str))
-	{
+	while (getline(ifs, str)) {
 		if (str.empty())
 			continue;
-		std::string key = str.substr(0, str.find(','));
+
+		size_t			pos = str.find(',');
+		if (pos == str.npos) {
+			std::cout << "Error: no delimiter\n";
+			return ;
+		}
+		std::string		key = str.substr(0, pos);
+
+		if (key.length() != 10)
+		{
+			std::cout << "Error: Bad date format" << std::endl;
+			return ;
+		}
 		float	value = strtof(str.substr(str.find(',') + 1, str.npos).c_str(), NULL);
 		this->_data.insert(std::make_pair(key, value));
 	}
@@ -60,3 +70,8 @@ const std::map<std::string, float> &BitcoinExchange::getData() const { return th
 /*---------------------------------- Setter ----------------------------------*/
 
 /*----------------------------- Member Functions -----------------------------*/
+
+// bool	BitcoinExchange::isValidDate(const std::string &date)
+// {
+	
+// }

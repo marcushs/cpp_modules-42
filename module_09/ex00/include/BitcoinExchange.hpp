@@ -30,6 +30,7 @@ public:
 
 	BitcoinExchange	&operator=(const BitcoinExchange &rhs);
 	const std::map<std::string, float> &getData() const;
+	bool	isValidDate(const std::string &date);
 
 private:
 	std::map<std::string, float>	_data;

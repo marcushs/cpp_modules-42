@@ -35,10 +35,23 @@ int	main(int argc, char **argv)
 	for (it = btc.getData().begin(); it != btc.getData().end(); it++) {
 		std::cout << "Key: " << it->first << " , " << "Value: " << it->second << std::endl;
 	}
-	// if (btc.getData()["2001-42-42"] == btc.getData()::end);
-	// 	std::cout << "map::end" << std::endl;
 
-	// ifs.close();
+	ifs.close();
 
+
+	// std::string date = "2020-02-30";
+	// struct tm tm;
+	// if (!strptime(date.c_str(), "%Y-%m-%d", &tm))
+	// {
+	// 	std::cout << "strptime error\n";
+	// 	return 1;
+	// }
+	// std::cout << tm.tm_year + 1900 << "-" << tm.tm_mon + 1 << "-" << tm.tm_mday << std::endl;
+	// std::time_t t_date = std::mktime(&tm);
+	// if (t_date == -1)
+	// {
+	// 	std::cout << "mktime error\n";
+	// }
+	// std::cout << "Seconds since epoch: " << t_date << std::endl;
 	return 0;
 }

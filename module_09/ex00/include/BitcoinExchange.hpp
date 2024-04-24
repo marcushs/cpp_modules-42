@@ -22,7 +22,12 @@
 
 class BitcoinExchange
 {
-
+	class GradeTooHighException : public std::exception
+		{
+		public:
+			const char* what() const throw() {return "Grade too high!";}
+		};
+		
 public:
 	BitcoinExchange();
 	BitcoinExchange(const BitcoinExchange &src);
@@ -31,6 +36,7 @@ public:
 	BitcoinExchange	&operator=(const BitcoinExchange &rhs);
 	const std::map<std::string, float> &getData() const;
 	bool	isValidDate(const std::string &date);
+	bool	isLeapYear(const int &yr);
 
 private:
 	std::map<std::string, float>	_data;

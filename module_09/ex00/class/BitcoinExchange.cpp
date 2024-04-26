@@ -6,43 +6,38 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:52:08 by hleung            #+#    #+#             */
-/*   Updated: 2024/04/26 09:25:49 by hleung           ###   ########.fr       */
+/*   Updated: 2024/04/26 16:47:01 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/BitcoinExchange.hpp"
 
+static bool	isValidDate(const std::string &date);
+static bool	isLeapYear(const int &yr);
+static void	trimWhiteSpace(std::string &str);
+static bool	isValidValue(const std::string &value);
 
 /*------------------------------- Constructors -------------------------------*/
 
-BitcoinExchange::BitcoinExchange()
+BitcoinExchange::BitcoinExchange(char *path)
 {
 	std::ifstream	ifs;
 	std::string		str;
 	
-	ifs.open("../cpp_09/data.csv");
+	ifs.open(path);
 	if (!ifs.good()) {
-		std::cout << "Error: cannot access database" << std::endl;
+		std::cout << "Error: Cannot access database" << std::endl;
 		throw BitcoinExchange::ConstructorException();
 	}
 	getline(ifs, str);
 	while (getline(ifs, str)) {
 		if (str.empty())
 			continue;
-
-		size_t	pos = str.find(',');
-		if (pos != str.rfind(',') || pos == str.npos) {
-			std::cout << "Error: Bad data entry" << std::endl;
-			throw BitcoinExchange::ConstructorException();
-		}
-		std::string		key = str.substr(0, pos);
-		if (!isValidDate(key))
-		{
-			std::cout << "Error: Bad date\n";
-			throw BitcoinExchange::ConstructorException();
-		}
-		float	value = strtof(str.substr(pos + 1, str.npos).c_str(), NULL);
-		this->_data.insert(std::make_pair(key, value));
+		addToMap(str);
+	}
+	if (this->_data.empty()) {
+		std::cout << "Error: Empty database" << std::endl;
+		throw BitcoinExchange::ConstructorException();
 	}
 	ifs.close();
 }
@@ -64,14 +59,49 @@ BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &rhs)
 
 /*---------------------------------- Getter ----------------------------------*/
 
-const std::map<std::string, float> &BitcoinExchange::getData() const { return this->_data; }
+const std::map<std::string, double> &BitcoinExchange::getData() const { return this->_data; }
 
 /*---------------------------------- Setter ----------------------------------*/
 
 /*----------------------------- Member Functions -----------------------------*/
 
-bool	BitcoinExchange::isValidDate(const std::string &date)
+void	BitcoinExchange::addToMap(const std::string &str)
 {
+	size_t	pos = str.find(',');
+	if (pos != str.rfind(',') || pos == str.npos) {
+		std::cout << "Error: Invalid data entry" << std::endl;
+		throw BitcoinExchange::ConstructorException();
+	}
+	std::string	key = str.substr(0, pos);
+	trimWhiteSpace(key);
+	if (!isValidDate(key)) {
+		std::cout << "Error: Invalid date" << std::endl;
+		throw BitcoinExchange::ConstructorException();
+	}
+	std::string	value = str.substr(pos + 1, str.npos);
+	trimWhiteSpace(value);
+	if (!isValidValue(value)) {
+		std::cout << "Error: Invalid value" << std::endl;
+		throw BitcoinExchange::ConstructorException();
+	}
+	std::cout << "value: " << value << std::endl;
+	// this->_data.insert(std::make_pair(key, value));
+}
+
+/*------------------------- Static Helper Functions --------------------------*/
+
+static void	trimWhiteSpace(std::string &str)
+{
+	if (str.empty())
+		return ;
+	size_t	begin = str.find_first_not_of(" \t\n\v\f\r");
+	size_t	end = str.find_last_not_of(" \t\n\v\f\r");
+	str = str.substr(begin, end - begin + 1);
+}
+
+static bool	isValidDate(const std::string &date)
+{
+	std::cout << date << std::endl;
 	if (date.length() != 10)
 		return false;
 	if (date[4] != '-' || date[7] != '-')
@@ -92,9 +122,16 @@ bool	BitcoinExchange::isValidDate(const std::string &date)
 	return true;
 }
 
-bool	BitcoinExchange::isLeapYear(const int &yr)
+static bool	isLeapYear(const int &yr)
 {
-	if ((yr % 4 == 0 && yr % 100 != 0) || yr % 400 == 0)
-		return true;
-	return false;
+	return (yr % 4 == 0 && yr % 100 != 0) || yr % 400 == 0;
+}
+
+static bool	isValidValue(const std::string &value)
+{
+	if (value.find_first_not_of("1234567890.") != std::string::npos)
+		return false;
+	if (value.find('.') != value.rfind('.'))
+		return false;
+	return true;
 }

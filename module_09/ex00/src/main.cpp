@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:49:11 by hleung            #+#    #+#             */
-/*   Updated: 2024/04/26 09:27:54 by hleung           ###   ########.fr       */
+/*   Updated: 2024/04/26 10:52:41 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 		return 2;
 	}
 	try {
-		BitcoinExchange btc;
+		BitcoinExchange btc(argv[1]);
 	} catch (const BitcoinExchange::ConstructorException &e) {
 		ifs.close();
 		return 1;

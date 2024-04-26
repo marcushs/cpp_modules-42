@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:52:25 by hleung            #+#    #+#             */
-/*   Updated: 2024/01/09 16:39:16 by hleung           ###   ########.fr       */
+/*   Updated: 2024/04/26 09:28:34 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@
 
 class BitcoinExchange
 {
-	class GradeTooHighException : public std::exception
-		{
-		public:
-			const char* what() const throw() {return "Grade too high!";}
-		};
 		
 public:
 	BitcoinExchange();
@@ -38,6 +33,7 @@ public:
 	bool	isValidDate(const std::string &date);
 	bool	isLeapYear(const int &yr);
 
+	class	ConstructorException : public std::exception {};
 private:
 	std::map<std::string, float>	_data;
 };

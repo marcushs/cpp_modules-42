@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:52:08 by hleung            #+#    #+#             */
-/*   Updated: 2024/01/09 16:39:52 by hleung           ###   ########.fr       */
+/*   Updated: 2024/04/26 09:25:49 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ BitcoinExchange::BitcoinExchange()
 	ifs.open("../cpp_09/data.csv");
 	if (!ifs.good()) {
 		std::cout << "Error: cannot access database" << std::endl;
-		return ;
+		throw BitcoinExchange::ConstructorException();
 	}
 	getline(ifs, str);
 	while (getline(ifs, str)) {
@@ -33,13 +33,13 @@ BitcoinExchange::BitcoinExchange()
 		size_t	pos = str.find(',');
 		if (pos != str.rfind(',') || pos == str.npos) {
 			std::cout << "Error: Bad data entry" << std::endl;
-			return ;
+			throw BitcoinExchange::ConstructorException();
 		}
 		std::string		key = str.substr(0, pos);
 		if (!isValidDate(key))
 		{
 			std::cout << "Error: Bad date\n";
-			return ;
+			throw BitcoinExchange::ConstructorException();
 		}
 		float	value = strtof(str.substr(pos + 1, str.npos).c_str(), NULL);
 		this->_data.insert(std::make_pair(key, value));

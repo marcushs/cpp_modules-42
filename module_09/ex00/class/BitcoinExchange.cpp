@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:52:08 by hleung            #+#    #+#             */
-/*   Updated: 2024/04/28 15:59:58 by hleung           ###   ########.fr       */
+/*   Updated: 2024/04/29 17:14:30 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static bool	isValidDate(const std::string &date);
 static bool	isLeapYear(const int &yr);
 static void	trimWhiteSpace(std::string &str);
 static bool	isValidValue(const std::string &value);
-static bool	isValidInput(const std::string &input);
+static bool	parseInput(const std::string &input, std::string &date, double &value);
 
 /*------------------------------- Constructors -------------------------------*/
 
@@ -49,15 +49,9 @@ BitcoinExchange::~BitcoinExchange() {}
 BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &rhs)
 {
 	if (this != &rhs)
-		this->_data = rhs._data;	
+		this->_data = rhs._data;
 	return (*this);
 }
-
-/*---------------------------------- Getter ----------------------------------*/
-
-const std::map<std::string, double> &BitcoinExchange::getData() const { return this->_data; }
-
-/*---------------------------------- Setter ----------------------------------*/
 
 /*----------------------------- Member Functions -----------------------------*/
 
@@ -71,6 +65,7 @@ void	BitcoinExchange::addToMap(const std::string &str)
 	if (!isValidDate(key))
 		throw std::runtime_error("Error: Invalid date");
 	std::string	value_str = str.substr(pos + 1, str.npos);
+	trimWhiteSpace(value_str);
 	if (!isValidValue(value_str)) 
 		throw std::runtime_error("Error: Invalid value");
 	double	value = strtod(value_str.c_str(), NULL);
@@ -86,10 +81,27 @@ void	BitcoinExchange::findExchangeValue(const char *inputPath)
 	if (!ifs.good())
 		throw std::runtime_error("Error: Cannot open input file");
 	while (getline(ifs, str)) {
-		if (str.empty() || !str.compare("date | value") || !isValidInput(str))
+		std::string	date;
+		double		value;
+		if (str.empty() || !str.compare("date | value") || !parseInput(str, date, value))
 			continue;
+		printCalculatedValue(date, value);
 	}
 	ifs.close();
+}
+
+void	BitcoinExchange::printCalculatedValue(const std::string &date, const double &value) const
+{
+	dataIt	it = this->_data.find(date);
+	if (it == this->_data.end()) {
+		it = this->_data.lower_bound(date);
+		if (it == this->_data.begin()) {
+			std::cout << "Error: no date entry before " << date << std::endl;
+			return;
+		}
+		it--;
+	}
+	std::cout << date << " => " << value << " = " << it->second * value << std::endl;
 }
 
 /*------------------------- Static Helper Functions --------------------------*/
@@ -132,26 +144,46 @@ static bool	isLeapYear(const int &yr)
 
 static bool	isValidValue(const std::string &value)
 {
-	if (value.find_first_not_of(" \t\n\v\f\r1234567890.") != std::string::npos)
+	if (value.find('-') != value.rfind('-'))
+		return false;
+	if (value.find('-') != value.npos && value[0] != '-')
+		return false;
+	if (value.find_first_not_of(" \t\n\v\f\r1234567890.-") != value.npos)
 		return false;
 	if (value.find('.') != value.rfind('.'))
 		return false;
 	return true;
 }
 
-static bool	isValidInput(const std::string &input)
+static bool	parseInput(const std::string &input, std::string &date, double &value)
 {
 	size_t	pos = input.find('|');
 	if (pos == input.npos || pos != input.rfind('|')) {
 		std::cout << "Error: bad input => " << input << std::endl;
 		return false;
 	}
-	std::string	date = input.substr(0, pos);
+	date = input.substr(0, pos);
 	trimWhiteSpace(date);
 	if (!isValidDate(date)) {
 		std::cout << "Error: Invalid date" << std::endl;
 		return false;
 	}
 	std::string	value_str = input.substr(pos + 1, input.npos);
-	
+	trimWhiteSpace(value_str);
+	if (!isValidValue(value_str)) {
+		std::cout << "Error: Invalid value" << std::endl;
+		return false;
+	}
+	value = strtod(value_str.c_str(), NULL);
+	if (value < 0) {
+		std::cout << "Error: not a postitive number." << std::endl;
+		return false;
+	}
+	if (value > 1000) {
+		std::cout << "Error: too large a number." << std::endl;
+		return false;
+	}
+	return true;
 }
+
+

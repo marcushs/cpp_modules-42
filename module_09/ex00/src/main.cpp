@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:49:11 by hleung            #+#    #+#             */
-/*   Updated: 2024/04/26 10:52:41 by hleung           ###   ########.fr       */
+/*   Updated: 2024/04/28 15:48:46 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,28 @@
 
 int	main(int argc, char **argv)
 {
-	if (argc != 2) {
+	if (argc != 3) {
 		std::cout << "Usage: btc <input file>" << std::endl;
 		return 1;
 	}
-	std::ifstream ifs;
-	ifs.open(argv[1], std::ifstream::in);
-	if (!ifs.good()) {
-		std::cout << "Error: cannot open file " << argv[1] << std::endl;
-		return 2;
-	}
 	try {
-		BitcoinExchange btc(argv[1]);
-	} catch (const BitcoinExchange::ConstructorException &e) {
-		ifs.close();
+		BitcoinExchange btc;
+		for (std::map<std::string, double>::const_iterator it = btc.getData().begin(); it != btc.getData().end(); ++it)
+		{
+			std::cout << "Date: " << it->first << " | " << "Value: " << it->second << std::endl;
+		}
+		btc.findExchangeValue(argv[1]);
+	} catch (const std::runtime_error &e) {
+		std::cout << e.what() << std::endl;
 		return 1;
 	}
+	
 	// std::map<std::string, float>::const_iterator itlow = btc.getData().lower_bound("2022-03-21");
 	// std::cout << "lower_bound value is : " << itlow->second << std::endl;
 	// std::map<std::string, float>::const_iterator it;
 	// for (it = btc.getData().begin(); it != btc.getData().end(); it++) {
 	// 	std::cout << "Key: " << it->first << " , " << "Value: " << it->second << std::endl;
 	// }
-
-	ifs.close();
 
 
 	// std::string date = "2020-02-30";

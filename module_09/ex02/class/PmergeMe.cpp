@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 20:18:17 by hleung            #+#    #+#             */
-/*   Updated: 2024/05/03 16:08:00 by hleung           ###   ########.fr       */
+/*   Updated: 2024/05/03 17:12:04 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ template < typename Container, typename PairedContainer >
 static void	makeSortedPairs(Container &container, PairedContainer &pairedContainer);
 
 void recursiveSort(std::vector<std::vector<int> >& vec, size_t start, size_t end);
+
 bool compare(const std::vector<int>& a, const std::vector<int>& b);
+
+template < typename Container, typename PairedContainer >
+static void	insertion(Container &container, PairedContainer &pairedContainer);
 
 /*------------------------------- Constructors -------------------------------*/
 
@@ -90,6 +94,8 @@ void	PmergeMe::sortVector()
 			std::cout << *j << " ";
 		}
 	}
+	std::cout << std::endl;
+	insertion(this->_vector, pairedVector);
 }
 
 /*------------------------- Static Helper Functions --------------------------*/
@@ -134,3 +140,31 @@ bool compare(const std::vector<int>& a, const std::vector<int>& b) {
     return a[1] < b[1];
 }
 
+template < typename Container, typename PairedContainer >
+static void	insertion(Container &container, PairedContainer &pairedContainer) {
+	(void)container;
+	Container	main;
+	Container	pend;
+	typename PairedContainer::iterator	i = pairedContainer.begin();
+	for (; i != pairedContainer.end(); i++) {
+		for (typename Container::iterator j = (*i).begin(); j != (*i).end(); j++) {
+			if (i == pairedContainer.begin()) {
+				main.push_back(*j);
+			} else if (j != (*i).begin()) {
+				main.push_back(*j);
+			} else {
+				pend.push_back(*j);
+			}
+		}
+	}
+	std::cout << "Main: ";
+	for (typename Container::iterator it = main.begin(); it != main.end(); it++){
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
+	std::cout << "Pend: ";
+	for (typename Container::iterator it = pend.begin(); it != pend.end(); it++){
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
+}

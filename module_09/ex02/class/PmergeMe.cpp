@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 20:18:17 by hleung            #+#    #+#             */
-/*   Updated: 2024/05/03 15:39:23 by hleung           ###   ########.fr       */
+/*   Updated: 2024/05/03 16:08:00 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,17 @@ void	PmergeMe::sortVector()
 	print();
 	std::vector<std::vector<int> > pairedVector;
 	makeSortedPairs(this->_vector, pairedVector);
-	recursiveSort(pairedVector, 0, pairedVector.size() - 1);
+	if (this->_vector.size() % 2 == 1) {
+		recursiveSort(pairedVector, 0, pairedVector.size() - 2);
+	} else {
+		recursiveSort(pairedVector, 0, pairedVector.size() - 1);
+	}
 	std::cout << "pairedVector: ";
 	for (std::vector<std::vector<int> >::iterator i = pairedVector.begin(); i != pairedVector.end(); ++i) {
 		for (std::vector<int>::iterator j =  (*i).begin(); j != (*i).end(); ++j) {
 			std::cout << *j << " ";
 		}
 	}
-
 }
 
 /*------------------------- Static Helper Functions --------------------------*/

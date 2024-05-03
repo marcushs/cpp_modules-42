@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 20:17:47 by hleung            #+#    #+#             */
-/*   Updated: 2024/05/02 18:06:45 by hleung           ###   ########.fr       */
+/*   Updated: 2024/05/03 12:04:42 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <vector>
 # include <deque>
 # include <cstdlib>
+# include <algorithm>
 
 class PmergeMe
 {
@@ -25,7 +26,7 @@ public:
 	PmergeMe(char **args);
 	~PmergeMe();
 	void	print();
-	void	sort();
+	void	sortVector();
 	
 private:
 	PmergeMe();

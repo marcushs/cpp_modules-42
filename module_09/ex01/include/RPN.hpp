@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 17:17:46 by hleung            #+#    #+#             */
-/*   Updated: 2024/04/30 19:40:56 by hleung           ###   ########.fr       */
+/*   Updated: 2024/05/03 08:14:22 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stack>
 # include <iostream>
 # include <cstdlib>
+# include <list>
 
 class RPN
 {
@@ -28,7 +29,7 @@ public:
 private:
 	RPN(const RPN &src);
 	RPN	&operator=(const RPN &rhs);
-	std::stack<int>	_stack;
+	std::stack<int, std::list<int> >	_stack;
 };
 
 #endif

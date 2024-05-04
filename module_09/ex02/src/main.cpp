@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 20:18:19 by hleung            #+#    #+#             */
-/*   Updated: 2024/05/03 18:58:57 by hleung           ###   ########.fr       */
+/*   Updated: 2024/05/04 11:08:20 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 	try {
 		PmergeMe p(av);
 		p.sortVector();
+		// p.sortDeque();
 	} catch(const std::runtime_error &e) {
 		std::cout << e.what() << std::endl;
 		return 1;

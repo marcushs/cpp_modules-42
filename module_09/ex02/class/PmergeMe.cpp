@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 20:18:17 by hleung            #+#    #+#             */
-/*   Updated: 2024/05/03 18:45:05 by hleung           ###   ########.fr       */
+/*   Updated: 2024/05/04 11:07:36 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 template < typename Container, typename PairedContainer >
 static void	makeSortedPairs(Container &container, PairedContainer &pairedContainer);
 
-void recursiveSort(std::vector<std::vector<int> >& vec, size_t start, size_t end);
+template < typename PairedContainer >
+void mergeSortPairs(PairedContainer &pairedContainer, size_t start, size_t end);
 
 bool compare(const std::vector<int> &a, const std::vector<int> &b);
+
+template < typename PairedContainer >
+void	merge(PairedContainer &pairedContainer, size_t start, size_t mid, size_t end);
 
 template < typename Container, typename PairedContainer >
 static void	insertion(Container &container, PairedContainer &pairedContainer);
@@ -85,9 +89,9 @@ void	PmergeMe::sortVector()
 	std::vector<std::vector<int> > pairedVector;
 	makeSortedPairs(this->_vector, pairedVector);
 	if (this->_vector.size() % 2 == 1) {
-		recursiveSort(pairedVector, 0, pairedVector.size() - 2);
+		mergeSortPairs(pairedVector, 0, pairedVector.size() - 2);
 	} else {
-		recursiveSort(pairedVector, 0, pairedVector.size() - 1);
+		mergeSortPairs(pairedVector, 0, pairedVector.size() - 1);
 	}
 	std::cout << "pairedVector: ";
 	for (std::vector<std::vector<int> >::iterator i = pairedVector.begin(); i != pairedVector.end(); ++i) {
@@ -96,27 +100,27 @@ void	PmergeMe::sortVector()
 		}
 	}
 	std::cout << std::endl;
-	insertion(this->_vector, pairedVector);
+	// insertion(this->_vector, pairedVector);
 }
 
-// void	PmergeMe::sortDeque()
-// {
-// 	print();
-// 	std::deque<std::deque<int> > pairedDeque;
-// 	makeSortedPairs(this->_deque, pairedDeque);
-// 	if (this->_deque.size() % 2 == 1) {
-// 		recursiveSort(pairedDeque, 0, pairedDeque.size() - 2);
-// 	} else {
-// 		recursiveSort(pairedDeque, 0, pairedDeque.size() - 1);
-// 	}
-// 	std::cout << "pairedDeque: ";
-// 	for (std::deque<std::deque<int> >::iterator i = pairedDeque.begin(); i != pairedDeque.end(); ++i) {
-// 		for (std::deque<int>::iterator j =  (*i).begin(); j != (*i).end(); ++j) {
-// 			std::cout << *j << " ";
-// 		}
-// 	}
-// 	std::cout << std::endl;
-// }
+void	PmergeMe::sortDeque()
+{
+	print();
+	std::deque<std::deque<int> > pairedDeque;
+	makeSortedPairs(this->_deque, pairedDeque);
+	if (this->_deque.size() % 2 == 1) {
+		mergeSortPairs(pairedDeque, 0, pairedDeque.size() - 2);
+	} else {
+		mergeSortPairs(pairedDeque, 0, pairedDeque.size() - 1);
+	}
+	std::cout << "pairedDeque: ";
+	for (std::deque<std::deque<int> >::iterator i = pairedDeque.begin(); i != pairedDeque.end(); ++i) {
+		for (std::deque<int>::iterator j =  (*i).begin(); j != (*i).end(); ++j) {
+			std::cout << *j << " ";
+		}
+	}
+	std::cout << std::endl;
+}
 
 /*------------------------- Static Helper Functions --------------------------*/
 
@@ -147,17 +151,14 @@ static void	makeSortedPairs(Container &container, PairedContainer &pairedContain
 	}
 }
 
-void recursiveSort(std::vector<std::vector<int> >& vec, size_t start, size_t end) {
+template < typename PairedContainer >
+static void	mergeSortPairs(PairedContainer &pairedContainer, size_t start, size_t end) {
     if (start < end) {
         size_t middle = start + (end - start) / 2;
-        recursiveSort(vec, start, middle);
-        recursiveSort(vec, middle + 1, end);
-        std::inplace_merge(vec.begin() + start, vec.begin() + middle + 1, vec.begin() + end + 1, compare);
+        mergeSortPairs(pairedContainer, start, middle);
+        mergeSortPairs(pairedContainer, middle + 1, end);
+		merge(pairedContainer, start, middle, end);
     }
-}
-
-bool compare(const std::vector<int> &a, const std::vector<int> &b) {
-    return a[1] < b[1];
 }
 
 template < typename Container, typename PairedContainer >
@@ -187,4 +188,28 @@ static void	insertion(Container &container, PairedContainer &pairedContainer) {
 		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
+}
+
+template < typename PairedContainer >
+static void	merge(PairedContainer &pairedContainer, size_t start, size_t mid, size_t end)
+{
+	PairedContainer	tmp(end - start + 1);
+	size_t	i = start, j = mid + 1, k = 0;
+
+	while (i <= mid && j <= end) {
+		if (pairedContainer[i][1] < pairedContainer[j][1]) {
+			tmp[k++] = pairedContainer[i++];
+		} else {
+			tmp[k++] = pairedContainer[j++];
+		}
+	}
+	while (i <= mid) {
+		tmp[k++] = pairedContainer[i++];
+	}
+	while (j <= end) {
+		tmp[k++] = pairedContainer[j++];
+	}
+	for (size_t p = 0; p < tmp.size(); ++p) {
+		pairedContainer[start + p] = tmp[p];
+	}
 }

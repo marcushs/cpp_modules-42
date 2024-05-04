@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 20:18:17 by hleung            #+#    #+#             */
-/*   Updated: 2024/05/03 17:12:04 by hleung           ###   ########.fr       */
+/*   Updated: 2024/05/03 18:45:05 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ static void	makeSortedPairs(Container &container, PairedContainer &pairedContain
 
 void recursiveSort(std::vector<std::vector<int> >& vec, size_t start, size_t end);
 
-bool compare(const std::vector<int>& a, const std::vector<int>& b);
+bool compare(const std::vector<int> &a, const std::vector<int> &b);
 
 template < typename Container, typename PairedContainer >
 static void	insertion(Container &container, PairedContainer &pairedContainer);
+
 
 /*------------------------------- Constructors -------------------------------*/
 
@@ -98,6 +99,25 @@ void	PmergeMe::sortVector()
 	insertion(this->_vector, pairedVector);
 }
 
+// void	PmergeMe::sortDeque()
+// {
+// 	print();
+// 	std::deque<std::deque<int> > pairedDeque;
+// 	makeSortedPairs(this->_deque, pairedDeque);
+// 	if (this->_deque.size() % 2 == 1) {
+// 		recursiveSort(pairedDeque, 0, pairedDeque.size() - 2);
+// 	} else {
+// 		recursiveSort(pairedDeque, 0, pairedDeque.size() - 1);
+// 	}
+// 	std::cout << "pairedDeque: ";
+// 	for (std::deque<std::deque<int> >::iterator i = pairedDeque.begin(); i != pairedDeque.end(); ++i) {
+// 		for (std::deque<int>::iterator j =  (*i).begin(); j != (*i).end(); ++j) {
+// 			std::cout << *j << " ";
+// 		}
+// 	}
+// 	std::cout << std::endl;
+// }
+
 /*------------------------- Static Helper Functions --------------------------*/
 
 template < typename Container, typename PairedContainer >
@@ -136,7 +156,7 @@ void recursiveSort(std::vector<std::vector<int> >& vec, size_t start, size_t end
     }
 }
 
-bool compare(const std::vector<int>& a, const std::vector<int>& b) {
+bool compare(const std::vector<int> &a, const std::vector<int> &b) {
     return a[1] < b[1];
 }
 

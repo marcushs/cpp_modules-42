@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 20:17:47 by hleung            #+#    #+#             */
-/*   Updated: 2024/05/03 12:04:42 by hleung           ###   ########.fr       */
+/*   Updated: 2024/05/03 18:37:27 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ public:
 	~PmergeMe();
 	void	print();
 	void	sortVector();
+	void	sortDeque();
 	
 private:
 	PmergeMe();

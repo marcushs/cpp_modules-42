@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 20:17:47 by hleung            #+#    #+#             */
-/*   Updated: 2024/05/04 11:08:18 by hleung           ###   ########.fr       */
+/*   Updated: 2024/05/05 11:26:40 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ class PmergeMe
 public:
 	PmergeMe(char **args);
 	~PmergeMe();
-	void	print();
+	void	printVector(int before);
+	void	printDeque(int before);
 	void	sortVector();
 	void	sortDeque();
 	

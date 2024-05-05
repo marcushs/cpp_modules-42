@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 20:18:17 by hleung            #+#    #+#             */
-/*   Updated: 2024/05/05 15:55:32 by hleung           ###   ########.fr       */
+/*   Updated: 2024/05/05 16:50:05 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,38 +80,10 @@ PmergeMe	&PmergeMe::operator=(const PmergeMe &rhs)
 
 /*----------------------------- Member Functions -----------------------------*/
 
-void	PmergeMe::printVector(int before)
-{
-	if (before) {
-		std::cout << "Vector before: ";
-	} else {
-		std::cout << "Vector after : ";
-	}
-	for (std::vector<int>::iterator it = this->_vector.begin(); it != this->_vector.end(); ++it) {
-		std::cout << *it << " ";
-	}
-	std::cout << std::endl;
-}
-
-void	PmergeMe::printDeque(int before)
-{
-	if (before) {
-		std::cout << "Deque before: ";
-	} else {
-		std::cout << "Deque after : ";
-	}
-	for (std::deque<int>::iterator it = this->_deque.begin(); it != this->_deque.end(); ++it) {
-		std::cout << *it << " ";
-	}
-	std::cout << std::endl;
-}
-
 void	PmergeMe::sortVector()
 {
 	size_t	size = this->_vector.size();
-	printVector(1);
 	if (size == 1) {
-		printVector(0);
 		return ;
 	}
 	bool	isOdd = size % 2 == 1;
@@ -123,16 +95,13 @@ void	PmergeMe::sortVector()
 		mergeSortPairs(pairedVector, 0, pairedVector.size() - 1);
 	}
 	insertion(this->_vector, pairedVector, isOdd);
-	printVector(0);
-	isSort(this->_vector);
+	// isSort(this->_vector);
 }
 
 void	PmergeMe::sortDeque()
 {
 	size_t	size = this->_deque.size();
-	printDeque(1);
 	if (size == 1) {
-		printDeque(0);
 		return ;
 	}
 	bool	isOdd = size % 2 == 1;
@@ -144,8 +113,23 @@ void	PmergeMe::sortDeque()
 		mergeSortPairs(pairedDeque, 0, pairedDeque.size() - 1);
 	}
 	insertion(this->_deque, pairedDeque, isOdd);
-	printDeque(0);
-	isSort(this->_deque);
+	// isSort(this->_deque);
+}
+
+void	PmergeMe::printContainer(int vector) const
+{
+	if (vector)
+	{
+		for (std::vector<int>::const_iterator it = this->_vector.begin(); it != this->_vector.end(); ++it) {
+			std::cout << *it << " ";
+		}
+		std::cout << std::endl;
+		return ;
+	}
+	for (std::deque<int>::const_iterator it = this->_deque.begin(); it != this->_deque.end(); ++it) {
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
 }
 
 /*------------------------- Static Helper Functions --------------------------*/

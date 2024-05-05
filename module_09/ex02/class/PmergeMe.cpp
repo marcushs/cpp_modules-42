@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 20:18:17 by hleung            #+#    #+#             */
-/*   Updated: 2024/05/05 11:42:10 by hleung           ###   ########.fr       */
+/*   Updated: 2024/05/05 15:55:32 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ PmergeMe::PmergeMe(char **args)
 		this->_vector.push_back(static_cast<int>(value));
 		this->_deque.push_back(static_cast<int>(value));
 	}
+	if (this->_vector.size() > 10000)
+		throw std::runtime_error("Error: list to long");
 }
 
 PmergeMe::PmergeMe(const PmergeMe &src) {*this = src;}
@@ -257,27 +259,27 @@ static void binaryInsertion(Container &vec, typename Container::iterator start, 
 template < typename Container, typename PairedContainer >
 static void	jacobsthal(Container &main, PairedContainer &pairedContainer, bool isOdd)
 {
-	size_t	jacobsthal[12] = {1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731};
-	size_t i = 0, k, j;
-	for (j = 1; j < 12 && jacobsthal[j] <= pairedContainer.size(); ++j) {
+	size_t	jacobsthal[13] = {1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461};
+	size_t	lastPair = pairedContainer.size() - 1;
+	size_t	pc = 0, k, j;
+	for (j = 1; j < 13 && jacobsthal[j] <= pairedContainer.size(); ++j) {
 		for (k = jacobsthal[j] - 1; k >= jacobsthal[j - 1]; --k) {
-			if (k == pairedContainer.size() - 1 && isOdd) {
+			if (k == lastPair && isOdd) {
 				binaryInsertion(main, main.begin(), main.end(), pairedContainer[k][0]);
-				i++;
 			} else {
-				typename Container::iterator	val = std::find(main.begin(), main.end(), pairedContainer[k][1]);
+				typename Container ::iterator	val = main.begin() + jacobsthal[j] + jacobsthal[j - 1] - 1;
 				binaryInsertion(main, main.begin(), val, pairedContainer[k][0]);
-				i++;
 			}
+			pc++;
 		}
 	}
-	i++;
-	for (; i <= pairedContainer.size() - 1; ++i) {
-		if (i == pairedContainer.size() - 1 && isOdd) {
-			binaryInsertion(main, main.begin(), main.end(), pairedContainer[i][0]);
+	pc++;
+	for (; pc <= lastPair; ++pc) {
+		if (pc == lastPair && isOdd) {
+			binaryInsertion(main, main.begin(), main.end(), pairedContainer[pc][0]);
 		} else {
-			typename Container::iterator	val = std::find(main.begin(), main.end(), pairedContainer[i][1]);
-			binaryInsertion(main, main.begin(), val, pairedContainer[i][0]);
+			typename Container ::iterator	val = main.begin() + (pc * 2);
+			binaryInsertion(main, main.begin(), val, pairedContainer[pc][0]);
 		}
 	}
 }
@@ -296,5 +298,3 @@ static void	isSort(Container &container)
 	std::cout << "Sorted!" << std::endl;
 	std::cout << "Size: " << container.size() << std::endl;
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 20:18:19 by hleung            #+#    #+#             */
-/*   Updated: 2024/05/05 11:41:25 by hleung           ###   ########.fr       */
+/*   Updated: 2024/05/05 11:50:26 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int ac, char **av)
 {
 	if (ac < 2) {
-		std::cout << "Usage: PmergeMe \"list of integers\"" << std::endl;
+		std::cout << "Usage: PmergeMe \"list of positive integers\"" << std::endl;
 		return 1;
 	}
 	try {

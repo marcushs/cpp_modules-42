@@ -6,7 +6,7 @@
 /*   By: hleung <hleung@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:52:08 by hleung            #+#    #+#             */
-/*   Updated: 2024/04/29 17:14:30 by hleung           ###   ########.fr       */
+/*   Updated: 2024/05/06 20:34:17 by hleung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	BitcoinExchange::addToMap(const std::string &str)
 	trimWhiteSpace(key);
 	if (!isValidDate(key))
 		throw std::runtime_error("Error: Invalid date");
-	std::string	value_str = str.substr(pos + 1, str.npos);
+	std::string	value_str = str.substr(pos + 1);
 	trimWhiteSpace(value_str);
 	if (!isValidValue(value_str)) 
 		throw std::runtime_error("Error: Invalid value");
@@ -111,6 +111,8 @@ static void	trimWhiteSpace(std::string &str)
 	if (str.empty())
 		return ;
 	size_t	begin = str.find_first_not_of(" \t\n\v\f\r");
+	if (begin == str.npos)
+		return ;
 	size_t	end = str.find_last_not_of(" \t\n\v\f\r");
 	str = str.substr(begin, end - begin + 1);
 }
@@ -144,11 +146,13 @@ static bool	isLeapYear(const int &yr)
 
 static bool	isValidValue(const std::string &value)
 {
+	if (value.empty())
+		return false;
 	if (value.find('-') != value.rfind('-'))
 		return false;
 	if (value.find('-') != value.npos && value[0] != '-')
 		return false;
-	if (value.find_first_not_of(" \t\n\v\f\r1234567890.-") != value.npos)
+	if (value.find_first_not_of("1234567890.-") != value.npos)
 		return false;
 	if (value.find('.') != value.rfind('.'))
 		return false;
@@ -157,8 +161,8 @@ static bool	isValidValue(const std::string &value)
 
 static bool	parseInput(const std::string &input, std::string &date, double &value)
 {
-	size_t	pos = input.find('|');
-	if (pos == input.npos || pos != input.rfind('|')) {
+	size_t	pos = input.find(" | ");
+	if (pos == input.npos || pos != input.rfind(" | ")) {
 		std::cout << "Error: bad input => " << input << std::endl;
 		return false;
 	}
@@ -168,7 +172,7 @@ static bool	parseInput(const std::string &input, std::string &date, double &valu
 		std::cout << "Error: Invalid date" << std::endl;
 		return false;
 	}
-	std::string	value_str = input.substr(pos + 1, input.npos);
+	std::string	value_str = input.substr(pos + 3, input.npos);
 	trimWhiteSpace(value_str);
 	if (!isValidValue(value_str)) {
 		std::cout << "Error: Invalid value" << std::endl;

@@ -25,7 +25,7 @@ BitcoinExchange::BitcoinExchange()
 	std::ifstream	ifs;
 	std::string		str;
 	
-	ifs.open("../cpp_09/data.csv", std::ifstream::in);
+	ifs.open("data.csv", std::ifstream::in);
 	if (!ifs.good())
 		throw std::runtime_error("Error: Cannot access database");
 	while (getline(ifs, str)) {

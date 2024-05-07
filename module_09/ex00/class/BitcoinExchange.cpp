@@ -123,6 +123,8 @@ static bool	isValidDate(const std::string &date)
 		return false;
 	if (date[4] != '-' || date[7] != '-')
 		return false;
+	if (date.find_first_not_of("1234567890.-") != date.npos)
+		return false;
 
 	int	yr = std::atoi(date.substr(0,4).c_str());
 	if (yr < 2009 || yr > 2100)
